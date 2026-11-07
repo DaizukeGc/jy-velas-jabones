@@ -83,12 +83,10 @@ implementación.
 
 ## Reflexión final
 
-El asistente me ayudó más en la parte mecánica: convertir el criterio de aceptación en el
-contrato, proponer la estructura de `Material`, `Compra` e `Inventario` y redactar la primera
-versión de las pruebas. También fue útil para detectar duplicación en el refactor. La prueba que
-más valor aportó fue la de cantidad negativa, porque descubrió que el orden de las validaciones
-importa: el error se mostraba, pero el inventario ya estaba corrupto. Aprendí a no aceptar
-sugerencias que agregan dependencias (SQLite, pandas, `Decimal`) sin justificarlas contra el
-contrato y el ADR. En la próxima funcionalidad escribiría primero los casos límite en una tabla,
-los convertiría en pruebas y solo entonces pediría el código; además revisaría que cada prueba
-falle por la razón correcta antes de implementar.
+El asistente me ayudó más en la parte mecánica: convertir el criterio en contrato, proponer las
+clases y redactar la primera versión de las pruebas. La prueba de cantidad negativa fue la más
+valiosa, porque descubrió que el orden de las validaciones importa: el error se mostraba, pero
+el inventario ya estaba corrupto. Aprendí a no aceptar dependencias (SQLite, pandas, `Decimal`)
+sin justificarlas contra el contrato y el ADR. En la próxima funcionalidad escribiría primero la
+tabla de casos límite, revisaría que cada prueba falle por la razón correcta y solo entonces
+pediría el código.
