@@ -1,0 +1,23 @@
+# Credenciales y entorno
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentos fuente de la asignación (no forman parte del código)
+/semana 3.pdf
+/Tarea_Semana_5.pdf
+/bitacora_ia/
+
+# Temporales de Word y del sistema
+~$*
+*.tmp
