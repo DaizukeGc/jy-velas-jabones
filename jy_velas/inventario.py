@@ -6,6 +6,9 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Iterable
 
+MENSAJE_CANTIDAD_INVALIDA = "La cantidad debe ser mayor que cero"
+MENSAJE_MATERIAL_NO_REGISTRADO = "El material '{codigo}' no está registrado"
+
 
 class ErrorInventario(Exception):
     """Error de negocio del inventario."""
@@ -40,11 +43,8 @@ class Inventario:
 
     def registrar_compra(self, codigo: str, cantidad: float, fecha: date | None = None) -> Compra:
         """Suma la cantidad comprada a la existencia del material y registra la compra."""
-        material = self._materiales.get(codigo)
-        if material is None:
-            raise ErrorInventario(f"El material '{codigo}' no está registrado")
-        if cantidad <= 0:
-            raise ErrorInventario("La cantidad debe ser mayor que cero")
+        material = self._buscar_material(codigo)
+        self._validar_cantidad(cantidad)
         material.existencia += cantidad
         compra = Compra(codigo_material=codigo, cantidad=cantidad, fecha=fecha or date.today())
         self._compras.append(compra)
@@ -52,13 +52,23 @@ class Inventario:
 
     def existencia(self, codigo: str) -> float:
         """Devuelve la existencia actual de un material."""
-        material = self._materiales.get(codigo)
-        if material is None:
-            raise ErrorInventario(f"El material '{codigo}' no está registrado")
-        return material.existencia
+        return self._buscar_material(codigo).existencia
 
     def historial(self, codigo: str | None = None) -> list[Compra]:
         """Devuelve las compras registradas, opcionalmente filtradas por material."""
         if codigo is None:
             return list(self._compras)
         return [compra for compra in self._compras if compra.codigo_material == codigo]
+
+    def _buscar_material(self, codigo: str) -> Material:
+        """Busca un material del catálogo o lanza un error de negocio."""
+        try:
+            return self._materiales[codigo]
+        except KeyError as error:
+            raise ErrorInventario(MENSAJE_MATERIAL_NO_REGISTRADO.format(codigo=codigo)) from error
+
+    @staticmethod
+    def _validar_cantidad(cantidad: float) -> None:
+        """Rechaza cantidades que no sean estrictamente positivas."""
+        if cantidad <= 0:
+            raise ErrorInventario(MENSAJE_CANTIDAD_INVALIDA)
