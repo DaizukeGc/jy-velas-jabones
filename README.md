@@ -120,10 +120,6 @@ El archivo `tests/test_registrar_compra.py` contiene **9 pruebas**:
 │   └── inventario.py          # HU-01: registrar compras de materiales
 ├── tests/
 │   └── test_registrar_compra.py
-├── docs/
-│   ├── generar_informe.py     # genera el informe APA 7
-│   ├── Informe_Semana_5.docx
-│   └── Informe_Semana_5.pdf
 ├── bitacora_ia.md             # bitácora de uso del asistente
 ├── README.md
 ├── pyproject.toml
