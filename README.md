@@ -92,6 +92,25 @@ python -m pytest
 
 Resultado esperado: **9 pruebas superadas**.
 
+### Pruebas incluidas
+
+El archivo `tests/test_registrar_compra.py` contiene **9 pruebas**:
+
+**Casos normales**
+- `test_compra_de_cera_suma_al_inventario`
+- `test_compra_de_frascos_suma_al_inventario`
+- `test_compra_queda_en_el_historial_con_la_fecha_de_hoy`
+
+**Casos límite**
+- `test_compra_de_una_sola_unidad_es_valida`
+- `test_compra_sobre_material_sin_existencias_es_valida`
+- `test_compra_con_fecha_personalizada_se_guarda_con_esa_fecha`
+
+**Casos de error**
+- `test_compra_con_cantidad_cero_lanza_error_y_no_cambia_existencias`
+- `test_compra_con_cantidad_negativa_lanza_error_y_no_cambia_existencias`
+- `test_compra_de_material_no_registrado_lanza_error`
+
 ## Estructura del repositorio
 
 ```text
