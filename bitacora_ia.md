@@ -62,13 +62,59 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Verificación:** Las pruebas de suma (800 + 2.000 = 2.800 y 10 + 24 = 34) pasan con `pytest.approx`; si más adelante se registran precios o dinero, se evaluará `Decimal` en esa funcionalidad.
 - **Commit relacionado:** `fc085c3` — feat: implementar registrar compra de materiales (pruebas en verde)
 
+### Entrada 7
+
+- **Fecha:** 2026-11-22
+- **Prompt o sugerencia:** Le pedí al asistente que, a partir de la regla de `registrar_compra` y de la nueva regla de `consumir_material`, propusiera particiones de equivalencia, valores límite y la tabla de decisión de la función que combina condiciones. Le exigí indicar de qué parte de la regla salía cada esperado y señalar las ambigüedades.
+- **Decisión:** Aceptada con cambios
+- **Por qué:** La IA propuso las particiones principales y una tabla de decisión correcta para `consumir_material`, pero al revisarla con las cinco preguntas faltaban cuatro cosas: la partición inválida del código vacío, el límite «cantidad igual a la existencia» (consumir todo), la partición de valores no finitos (`NaN`, `+∞`, `-∞`) y la ambigüedad de `historial(codigo_inexistente)`. Las agregué al registro y decidí que el filtro sin coincidencias devuelve una lista vacía.
+- **Verificación:** Cada fila de las secciones 1.1 a 1.5 de `registro_pruebas.md` tiene una prueba que la cubre. Revisé que los esperados salieran de la regla y no de ejecutar el código.
+- **Commit relacionado:** `docs: reescribir registro_pruebas.md con tablas formales de la semana 7`
+
+### Entrada 8
+
+- **Fecha:** 2026-11-22
+- **Prompt o sugerencia:** «Genera pruebas de pytest a partir de la regla y de mi tabla revisada. Usa `@pytest.mark.parametrize` con un comentario por fila, `pytest.approx` para decimales, `pytest.raises` con el tipo exacto de error y esperados fijos. No modifiques el código de producción. Para cada prueba, indica de qué fila de la tabla sale el esperado.»
+- **Decisión:** Aceptada con cambios
+- **Por qué:** La primera versión de la IA tenía pruebas débiles: `is not None`, `pytest.raises(Exception)`, un esperado de consumo que devolvía `0` al pasarse del stock, una prueba de fecha que ignoraba la fecha explícita y una de mínimo con `<` en lugar de `<=`. Corregí o descarté ocho pruebas y conservé solo las que comprobaban la regla. Ninguna prueba se ajustó para que pasara el código.
+- **Verificación:** `python -m pytest -q` reportó `58 passed`. Las pruebas corregidas fallan con las mutaciones M1 a M6, así que no son débiles.
+- **Commit relacionado:** `test: suite parametrizada de compras, consumo y consultas`
+
+### Entrada 9
+
+- **Fecha:** 2026-11-22
+- **Prompt o sugerencia:** «Genera un fixture de pytest con un catálogo ficticio de JY Velas y Jabones, con contexto local de Neiva, sin personas reales, con tildes, eñe, apóstrofo, texto vacío y valores en cero.»
+- **Decisión:** Aceptada con cambios
+- **Por qué:** La IA propuso nombres y códigos de materiales, pero los ajusté para incluir «Jabón de avena y ñame «Relámpago»», «Aroma d' naranja», un material con nombre vacío y un mínimo en cero. Eliminé cualquier dato que pareciera de una persona (nombres, teléfonos o documentos). El fixture quedó con alcance de función para que cada prueba reciba un inventario limpio.
+- **Verificación:** `tests/conftest.py` contiene solo productos y códigos inventados. Las 58 pruebas usan el fixture sin compartir estado y no hay datos de personas reales en el repositorio.
+- **Commit relacionado:** `test: datos sintéticos con casos difíciles en el fixture`
+
+### Entrada 10
+
+- **Fecha:** 2026-11-22
+- **Prompt o sugerencia:** «Propone seis mutaciones de código para comprobar si la suite detecta errores: cambiar `<=` por `<`, `>` por `>=`, un descuento por una suma, `<=` por `<` en el mínimo, ignorar la fecha y aceptar `NaN` e infinito. Indica qué prueba debería fallar en cada caso.»
+- **Decisión:** Aceptada
+- **Por qué:** Las seis mutaciones son cambios pequeños y realistas, y permiten comprobar que las pruebas no solo pasan, sino que fallan cuando el código se rompe. La IA acertó en las pruebas que debían fallar; ejecuté cada mutación por separado y restauré el archivo desde una copia en memoria.
+- **Verificación:** M1 falló en 4 pruebas, M2 en 1, M3 en 4, M4 en 3, M5 en 1 y M6 en 4. El SHA-256 del archivo restaurado coincide con el original. La evidencia está en `docs/mutaciones_semana7.txt` y en la sección 3 de `registro_pruebas.md`.
+- **Commit relacionado:** `docs: registrar las seis mutaciones y sus resultados`
+
 ## Resumen
+
+### Semana 5
 
 | Decisión | Cantidad |
 |---|---|
 | Aceptadas | 2 |
 | Aceptadas con cambios | 2 |
 | Rechazadas | 2 |
+
+### Semana 7
+
+| Decisión | Cantidad |
+|---|---|
+| Aceptadas | 1 |
+| Aceptadas con cambios | 3 |
+| Rechazadas | 0 |
 
 ## Errores que atraparon las pruebas
 
@@ -90,3 +136,28 @@ el inventario ya estaba corrupto. Aprendí a no aceptar dependencias (SQLite, pa
 sin justificarlas contra el contrato y el ADR. En la próxima funcionalidad escribiría primero la
 tabla de casos límite, revisaría que cada prueba falle por la razón correcta y solo entonces
 pediría el código.
+
+## Errores que atraparon las pruebas (semana 7)
+
+- **`NaN` e infinito.** La validación original solo comprobaba `cantidad <= 0`; `NaN` no es
+  mayor que cero, pero la comparación devolvía `False` y el valor se colaba. La prueba
+  `test_cantidad_no_positiva_lanza_error_y_no_cambia_nada[nan]` falló con `DID NOT RAISE`;
+  se agregó `math.isfinite` y la partición EP-Q4.
+- **Consumir toda la existencia.** La mutación M2 cambió `>` por `>=` y la prueba
+  `test_consumir_descuenta_existencia[MAT-FRASCO-10-10-0]` falló: consumir exactamente el
+  stock debe ser válido.
+- **Mínimo exacto.** La prueba inicial de la IA usaba `<` y no habría detectado la mutación
+  M4; se corrigió a `<=` y se agregó el caso límite 5/5.
+- **Fecha explícita.** La prueba de fecha de la IA esperaba `date.today()` aunque se pasara
+  una fecha; se corrigió para que el esperado saliera de la regla.
+
+## Reflexión de la semana 7
+
+El asistente fue útil para enumerar particiones y escribir la primera versión mecánica de las
+pruebas, pero la revisión fue mía: ocho pruebas de la IA eran débiles o contradecían la regla.
+Lo más valioso fue ejecutar las mutaciones, porque demostraron que una prueba que pasa no sirve
+si no falla cuando el código se rompe. Aprendí a separar el esperado de la regla del esperado
+que sugiere el código, y a documentar las ambigüedades (historial sin coincidencias, mínimo
+exacto, valores no finitos) antes de escribir la prueba. En la próxima funcionalidad empezaría
+por la tabla de decisión y por los bordes, y dejaría las mutaciones como parte normal del ciclo,
+no como una comprobación final.
