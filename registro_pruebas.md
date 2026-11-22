@@ -329,8 +329,9 @@ para comprobar que las pruebas fallan cuando el código tiene un error.
 | 7. Uso responsable y bitácora (10) | Entradas 7 a 10 de `bitacora_ia.md`, con prompt, resultado y verificación. |
 
 **Trazabilidad de los commits de la semana 7.** Los cambios se separaron en commits
-pequeños: uno para el código y el contrato, uno para la suite parametrizada, uno para este
-registro y uno para la bitácora. El historial completo se consulta con `git log --oneline`.
+pequeños: código y contrato (`cb9d016`), datos sintéticos (`ac1d48e`), suite parametrizada
+(`0c558bf`), este registro (`336eb98`) y bitácora (`811528e`). El historial completo se
+consulta con `git log --oneline`.
 
 ## 6. Referencias
 

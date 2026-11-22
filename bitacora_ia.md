@@ -69,7 +69,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada con cambios
 - **Por qué:** La IA propuso las particiones principales y una tabla de decisión correcta para `consumir_material`, pero al revisarla con las cinco preguntas faltaban cuatro cosas: la partición inválida del código vacío, el límite «cantidad igual a la existencia» (consumir todo), la partición de valores no finitos (`NaN`, `+∞`, `-∞`) y la ambigüedad de `historial(codigo_inexistente)`. Las agregué al registro y decidí que el filtro sin coincidencias devuelve una lista vacía.
 - **Verificación:** Cada fila de las secciones 1.1 a 1.5 de `registro_pruebas.md` tiene una prueba que la cubre. Revisé que los esperados salieran de la regla y no de ejecutar el código.
-- **Commit relacionado:** `docs: reescribir registro_pruebas.md con tablas formales de la semana 7`
+- **Commit relacionado:** `336eb98` — docs: reescribir registro_pruebas.md con tablas formales, revisión de IA y mutaciones
 
 ### Entrada 8
 
@@ -78,7 +78,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada con cambios
 - **Por qué:** La primera versión de la IA tenía pruebas débiles: `is not None`, `pytest.raises(Exception)`, un esperado de consumo que devolvía `0` al pasarse del stock, una prueba de fecha que ignoraba la fecha explícita y una de mínimo con `<` en lugar de `<=`. Corregí o descarté ocho pruebas y conservé solo las que comprobaban la regla. Ninguna prueba se ajustó para que pasara el código.
 - **Verificación:** `python -m pytest -q` reportó `58 passed`. Las pruebas corregidas fallan con las mutaciones M1 a M6, así que no son débiles.
-- **Commit relacionado:** `test: suite parametrizada de compras, consumo y consultas`
+- **Commit relacionado:** `0c558bf` — test: suite parametrizada de compras, consumo y consultas (58 pruebas)
 
 ### Entrada 9
 
@@ -87,7 +87,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada con cambios
 - **Por qué:** La IA propuso nombres y códigos de materiales, pero los ajusté para incluir «Jabón de avena y ñame «Relámpago»», «Aroma d' naranja», un material con nombre vacío y un mínimo en cero. Eliminé cualquier dato que pareciera de una persona (nombres, teléfonos o documentos). El fixture quedó con alcance de función para que cada prueba reciba un inventario limpio.
 - **Verificación:** `tests/conftest.py` contiene solo productos y códigos inventados. Las 58 pruebas usan el fixture sin compartir estado y no hay datos de personas reales en el repositorio.
-- **Commit relacionado:** `test: datos sintéticos con casos difíciles en el fixture`
+- **Commit relacionado:** `ac1d48e` — test: datos sintéticos con casos difíciles en el fixture
 
 ### Entrada 10
 
@@ -96,7 +96,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada
 - **Por qué:** Las seis mutaciones son cambios pequeños y realistas, y permiten comprobar que las pruebas no solo pasan, sino que fallan cuando el código se rompe. La IA acertó en las pruebas que debían fallar; ejecuté cada mutación por separado y restauré el archivo desde una copia en memoria.
 - **Verificación:** M1 falló en 4 pruebas, M2 en 1, M3 en 4, M4 en 3, M5 en 1 y M6 en 4. El SHA-256 del archivo restaurado coincide con el original. La evidencia está en `docs/mutaciones_semana7.txt` y en la sección 3 de `registro_pruebas.md`.
-- **Commit relacionado:** `docs: registrar las seis mutaciones y sus resultados`
+- **Commit relacionado:** `336eb98` — docs: reescribir registro_pruebas.md con tablas formales, revisión de IA y mutaciones
 
 ## Resumen
 
