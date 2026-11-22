@@ -4,11 +4,13 @@
 Fundación Escuela Tecnológica de Neiva «Jesús Oviedo Pérez»
 Autor: Jhonier Santiago García Coqueco
 Docente: Ing. Jorge Luis Trujillo Artunduaga
-Fecha: 7 de noviembre de 2026
+Fecha: 7 de noviembre de 2026 (actualizado el 22 de noviembre de 2026)
 
 Este repositorio contiene la primera funcionalidad del proyecto final (semana 5): el registro
 de compras de materiales del sistema de JY Velas y Jabones. La funcionalidad se construyó con
 pruebas primero (TDD), un asistente de código en el IDE y una bitácora de las decisiones tomadas.
+En la semana 7 se agregaron el consumo de materiales y las alertas de mínimo, con una suite de
+58 pruebas parametrizadas y un registro formal de casos.
 
 ## Funcionalidad de la semana 5
 
@@ -83,33 +85,78 @@ Además, actualiza la existencia del material y agrega la compra al historial.
 | 4 | `registrar_compra("MAT-CERA", 0)` | 800 g | `ErrorInventario("La cantidad debe ser mayor que cero")`; sigue en 800 g y no queda registro. |
 | 5 | `registrar_compra("MAT-AROMA", 100)` | No existe | `ErrorInventario("El material 'MAT-AROMA' no está registrado")`. |
 
-### Cómo ejecutar las pruebas
+## Funcionalidad de la semana 7: consumo de materiales y alertas de mínimo
+
+Esta iteración agrega dos reglas de negocio al mismo módulo de inventario. La primera
+descuenta los materiales que se consumen al iniciar una tanda; la segunda lista los
+materiales que llegaron a su mínimo de aviso. No se modificó la funcionalidad de la
+semana 5: las compras siguen registrándose igual y el historial de compras se conserva.
+
+### Regla de negocio (oráculo)
+
+**HU-02 (derivada de N-01).** Como dueña, quiero descontar los materiales que uso en una
+tanda para saber cuánto me queda y evitar quedarme sin stock.
+
+- El material debe existir en el catálogo.
+- La cantidad consumida debe ser un número finito estrictamente mayor que cero.
+- No se puede consumir más de la existencia disponible; si se intenta, no se modifica el
+  inventario y se informa cuánto hay disponible.
+- Un material está «bajo mínimo» cuando su existencia es igual o menor que su mínimo de
+  aviso. Un mínimo de cero solo genera alerta cuando la existencia también es cero.
+
+**HU-03 (derivada de N-01).** Como dueña, quiero ver qué materiales están en su mínimo
+para comprarlos antes de la próxima tanda.
+
+### Contratos
+
+```python
+class Inventario:
+    def consumir_material(self, codigo: str, cantidad: float) -> float: ...
+    def materiales_bajo_minimo(self) -> list[Material]: ...
+```
+
+| Método | Recibe | Devuelve | Errores |
+|---|---|---|---|
+| `consumir_material` | `codigo` del catálogo y `cantidad` finita > 0 | Existencia restante (`float`) | `ErrorInventario` si el material no existe, la cantidad no es positiva o supera la existencia. |
+| `materiales_bajo_minimo` | Nada | Lista de `Material` con `existencia <= minimo`, en el orden del catálogo | Ninguno. |
+
+### Tabla de decisión de `consumir_material`
+
+| Regla | Material registrado | Cantidad finita > 0 | Cantidad <= existencia | Resultado |
+|---|---|---|---|---|
+| R1 | Sí | Sí | Sí | Descuenta y devuelve la existencia restante. |
+| R2 | Sí | Sí | No | `ErrorInventario` de stock insuficiente; no modifica. |
+| R3 | Sí | No | No importa | `ErrorInventario` de cantidad inválida; no modifica. |
+| R4 | No | No importa | No importa | `ErrorInventario` de material no registrado. |
+
+Las reglas R3 y R4 se simplifican: la validación del material ocurre antes que la de la
+cantidad y la del stock. La tabla completa con las ocho combinaciones está en
+[`registro_pruebas.md`](registro_pruebas.md).
+
+## Cómo ejecutar las pruebas
 
 ```bash
 python -m pip install -r requirements-dev.txt
-python -m pytest
+python -m pytest -v
 ```
 
-Resultado esperado: **9 pruebas superadas**.
+Resultado esperado: **58 pruebas superadas**.
 
-### Pruebas incluidas
+## Pruebas incluidas
 
-El archivo `tests/test_registrar_compra.py` contiene **9 pruebas**:
+La carpeta `tests/` contiene **58 pruebas parametrizadas**:
 
-**Casos normales**
-- `test_compra_de_cera_suma_al_inventario`
-- `test_compra_de_frascos_suma_al_inventario`
-- `test_compra_queda_en_el_historial_con_la_fecha_de_hoy`
+- `tests/conftest.py`: fixture `catalogo_sintetico` con datos ficticios de JY Velas y
+  Jabones (tildes, eñe, apóstrofo, comillas angulares, nombre vacío y valores en cero).
+- `tests/test_registrar_compra.py`: 21 casos de la HU-01 (particiones, límites, errores y
+  tabla de decisión).
+- `tests/test_consumir_material.py`: 20 casos de la HU-02 (consumo, stock insuficiente,
+  cantidades no positivas y tabla de decisión).
+- `tests/test_consultas_inventario.py`: 17 casos de `existencia`, `historial` y
+  `materiales_bajo_minimo`.
 
-**Casos límite**
-- `test_compra_de_una_sola_unidad_es_valida`
-- `test_compra_sobre_material_sin_existencias_es_valida`
-- `test_compra_con_fecha_personalizada_se_guarda_con_esa_fecha`
-
-**Casos de error**
-- `test_compra_con_cantidad_cero_lanza_error_y_no_cambia_existencias`
-- `test_compra_con_cantidad_negativa_lanza_error_y_no_cambia_existencias`
-- `test_compra_de_material_no_registrado_lanza_error`
+El detalle de cada caso, la revisión de las pruebas generadas por IA y las mutaciones
+está en [`registro_pruebas.md`](registro_pruebas.md).
 
 ## Estructura del repositorio
 
@@ -117,9 +164,13 @@ El archivo `tests/test_registrar_compra.py` contiene **9 pruebas**:
 .
 ├── jy_velas/
 │   ├── __init__.py
-│   └── inventario.py          # HU-01: registrar compras de materiales
+│   └── inventario.py          # HU-01, HU-02 y HU-03
 ├── tests/
-│   └── test_registrar_compra.py
+│   ├── conftest.py            # datos sintéticos compartidos
+│   ├── test_registrar_compra.py
+│   ├── test_consumir_material.py
+│   └── test_consultas_inventario.py
+├── registro_pruebas.md        # diseño de casos, revisión de IA y mutaciones
 ├── bitacora_ia.md             # bitácora de uso del asistente
 ├── README.md
 ├── pyproject.toml
@@ -139,11 +190,26 @@ El archivo `tests/test_registrar_compra.py` contiene **9 pruebas**:
   verificable.
 - **Errores de negocio con `ErrorInventario`.** La interfaz podrá mostrar el mensaje al usuario sin
   exponer excepciones técnicas.
+- **ADR-002. El consumo no se mezcla con el historial de compras.** `historial()` sigue
+  devolviendo solo compras. Mezclar entradas y salidas en una misma lista obligaría a cambiar el
+  tipo `Compra` y a romper las pruebas de la semana 5; el consumo se resolverá con un historial
+  de movimientos en una iteración posterior.
+- **ADR-003. Solo cantidades finitas.** Se rechazan `NaN` e infinito con el mismo mensaje de
+  cantidad inválida porque no son cantidades físicas válidas, aunque el README original solo
+  hablaba de «mayor que cero».
+
+## Registro de pruebas
+
+El diseño formal de casos (particiones de equivalencia, valores límite, tablas de decisión),
+la revisión de las pruebas generadas por IA y las mutaciones aplicadas al código están en
+[`registro_pruebas.md`](registro_pruebas.md).
 
 ## Bitácora de uso de IA
 
 La bitácora completa está en [`bitacora_ia.md`](bitacora_ia.md). Registra las sugerencias del
-asistente aceptadas, ajustadas y rechazadas, con su verificación y el commit relacionado.
+asistente aceptadas, ajustadas y rechazadas, con su verificación y el commit relacionado. Las
+entradas 7 a 10 documentan el diseño de casos, la generación de pruebas, los datos sintéticos y
+las mutaciones de la semana 7.
 
 ## Autor
 
