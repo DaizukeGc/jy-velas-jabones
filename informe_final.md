@@ -3,11 +3,13 @@
 Proyecto: JY Velas y Jabones — núcleo de inventario, pedidos y ventas
 Estudiante: Jhonier Santiago García Coqueco
 Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
-Fecha: 2026-11-26
+Fecha: 26 de noviembre de 2026
 
 ## 1. Resumen
 
-La dueña de una microempresa de velas y jabones artesanales en Neiva no podía saber con certeza cuánto material tenía antes de preparar una tanda: llevaba el control en hojas de cálculo y apuntes. Construí una librería de Python que registra compras, descuenta consumos y lista los materiales en su mínimo, con contrato explícito y sin dependencias de ejecución. Usé IA en las seis fases del ciclo de vida: para acotar el problema y la herramienta, extraer requisitos de una entrevista simulada, proponer diagramas y decisiones arquitectónicas, generar el código con TDD, crear particiones y pruebas, y revisar seguridad y dependencias. La verificación fue continua: pruebas en rojo y verde, ocho pruebas débiles corregidas, seis mutaciones que rompieron la suite, linter y auditoría de dependencias. Estado final: 116 pruebas superadas, Ruff sin avisos, pip-audit sin vulnerabilidades y siete hallazgos de seguridad corregidos. El resultado principal no fue que la IA escribiera código, sino que cada salida fue contrastada con una regla, una prueba o una herramienta antes de aceptarla.
+La dueña de una microempresa de velas y jabones artesanales en Neiva no podía saber con certeza cuánto material tenía antes de preparar una tanda: llevaba el control en hojas de cálculo y apuntes. Construí una librería de Python (Python Software Foundation, 2026) que registra compras, descuenta consumos y lista los materiales en su mínimo, con contrato explícito y sin dependencias de ejecución. Usé IA en las seis fases del ciclo de vida: para acotar el problema y la herramienta, extraer requisitos de una entrevista simulada, proponer diagramas y decisiones arquitectónicas, generar el código con TDD, crear particiones y pruebas, y revisar seguridad y dependencias. La verificación fue continua: pruebas en rojo y verde, ocho pruebas débiles corregidas, seis mutaciones que rompieron la suite, linter (Ruff, 2026) y auditoría de dependencias (Python Packaging Authority, 2026). Estado final: 116 pruebas superadas, Ruff sin avisos, pip-audit sin vulnerabilidades y siete hallazgos de seguridad corregidos. El resultado principal no fue que la IA escribiera código, sino que cada salida fue contrastada con una regla, una prueba o una herramienta antes de aceptarla.
+
+**Palabras clave:** inteligencia artificial, ciclo de vida del software, pruebas, seguridad, inventario.
 
 ## 2. Problema y usuario
 
@@ -26,7 +28,7 @@ El alcance se limitó a la capa de dominio y a su verificación: no se construy�
 | 3. Diseño | Proponer contexto C4, secuencia, entidades y decisiones arquitectónicas | OpenCode + Mermaid CLI | [diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md), [adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md) | Contrasté los diagramas con el contrato y verifiqué que las nueve entidades y los ADR fueran coherentes con el código |
 | 4. Código | Implementar `Inventario`, `Material` y `Compra` con TDD y refactorizar | OpenCode | [inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [commit fc085c3](https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3) | Pruebas en rojo primero, verde después; Ruff y docstrings; el orden de validación se corrigió con una prueba |
 | 5. Pruebas | Generar particiones, valores límite, tablas de decisión y la suite parametrizada | OpenCode | [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md), [tests/](https://github.com/DaizukeGc/jy-velas-jabones/tree/main/tests) | Descarté ocho pruebas débiles, apliqué seis mutaciones y dejé 116 pruebas en verde |
-| 6. Operación | Revisar seguridad, configurar linter, auditar dependencias y documentar despliegue | OpenCode + Ruff + pip-audit | [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [pipeline](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) | Tres hallazgos de la IA eran falsos positivos; la revisión manual añadió tres hallazgos reales y el pipeline quedó en verde |
+| 6. Operación | Revisar seguridad, configurar linter, auditar dependencias y documentar despliegue | OpenCode + Ruff (2026) + pip-audit (Python Packaging Authority, 2026) | [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [pipeline](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) | Tres hallazgos de la IA eran falsos positivos; la revisión manual añadió tres hallazgos reales y el pipeline quedó en verde |
 
 ## 4. Verificación: lo que la IA hizo mal y cómo lo encontraste
 
@@ -43,7 +45,7 @@ El alcance se limitó a la capa de dominio y a su verificación: no se construy�
 - **Fase:** código.
 - **Qué propuso la IA:** guardar las compras en SQLite o con pandas, y usar `decimal.Decimal` para las cantidades.
 - **Qué estaba mal:** agregaba dependencias y complejidad sin que el contrato lo pidiera, y rompía el ADR-001. Las cantidades son magnitudes físicas, no dinero.
-- **Cómo lo detectaste:** comparé el ADR con el criterio de aceptación y comprobé que `pytest.approx` ya cubría los decimales de las pruebas.
+- **Cómo lo detectaste:** comparé el ADR con el criterio de aceptación y comprobé que `pytest.approx` ya cubría los decimales de las pruebas (pytest, 2026).
 - **Qué hice:** rechacé ambas sugerencias, dejé solo la biblioteca estándar y documenté la decisión en las entradas 3 y 6 de [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md); implementación en el commit [fc085c3](https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3).
 
 ### Caso 3: Ocho pruebas débiles
@@ -58,7 +60,7 @@ El alcance se limitó a la capa de dominio y a su verificación: no se construy�
 
 - **Fase:** operación.
 - **Qué propuso la IA:** que `math.isfinite` era ejecución dinámica de código y que faltaba hashing de contraseñas con bcrypt/argon2. No detectó los códigos duplicados ni que `materiales_bajo_minimo` devolviera referencias mutables.
-- **Qué estaba mal:** los dos primeros son falsos positivos (no hay `eval`, ni usuarios ni contraseñas); los otros dos son riesgos reales de integridad.
+- **Qué estaba mal:** los dos primeros son falsos positivos (no hay `eval`, ni usuarios ni contraseñas); los otros dos son riesgos reales de integridad (OWASP Foundation, 2021).
 - **Cómo lo detectaste:** leí línea por línea contra el commit `fe00949`, ejecuté Ruff y escribí 58 pruebas de abuso con tipos inválidos, `NaN`, longitudes excesivas y duplicados.
 - **Qué hice:** descarté los falsos positivos, corregí siete hallazgos y dejé la evidencia en [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md) y [test_seguridad_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py), commit [95118b9](https://github.com/DaizukeGc/jy-velas-jabones/commit/95118b9).
 
@@ -68,7 +70,7 @@ El sistema se entrega como una librería importable, no como un servidor: cada r
 
 - **Arquitectura:** librería Python de un solo módulo de dominio (`jy_velas/inventario.py`), sin dependencias de ejecución, con datos en memoria y contrato reutilizable por una futura interfaz. Diagramas y ADR en [diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md) y [adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md).
 - **Funcionalidades terminadas:** HU-01 registrar compras, HU-02 consumir materiales y HU-03 alertas de mínimo. Las tres historias Must del incremento están completas; las demás del levantamiento quedan para iteraciones posteriores.
-- **Pruebas:** 116 pruebas parametrizadas (21 + 20 + 17 + 58). Última ejecución en [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md): 116 passed, Ruff sin avisos y pip-audit sin vulnerabilidades. Cobertura de reglas de negocio y abuso en [plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md).
+- **Pruebas:** 116 pruebas parametrizadas (21 + 20 + 17 + 58) ejecutadas con pytest (2026). Última ejecución en [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md): 116 passed, Ruff sin avisos y pip-audit sin vulnerabilidades. Cobertura de reglas de negocio y abuso en [plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md).
 - **Pendientes:** persistencia entre sesiones (N-09), interfaz web o móvil, roles de usuario e integración continua de Ruff y pip-audit. Se difirieron porque no están en el criterio de aceptación de este incremento y porque el ADR-001 prioriza un núcleo simple.
 
 ## 6. Reflexión ética y legal
@@ -99,3 +101,21 @@ Aprendí a escribir un contrato antes de pedir código, a derivar pruebas de par
 - Plan de pruebas y mutaciones: [plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md), [mutaciones_semana7.txt](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt).
 - Seguridad, despliegue y operación: [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [despliegue.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md), [operacion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/operacion.md).
 - Última ejecución del pipeline: [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md).
+
+## Referencias
+
+Fundación Escuela Tecnológica de Neiva. (2026). *Proyecto integrador: tarea final del seminario* [Documento del curso].
+
+García Coqueco, J. S. (2026). *JY Velas y Jabones* [Repositorio de código]. GitHub. https://github.com/DaizukeGc/jy-velas-jabones
+
+OpenCode. (2026). *Documentación de OpenCode*. https://opencode.ai
+
+OWASP Foundation. (2021). *OWASP Top 10:2021*. https://owasp.org/Top10/
+
+pytest. (2026). *pytest documentation*. https://docs.pytest.org/
+
+Python Packaging Authority. (2026). *pip-audit* [Paquete de PyPI]. https://pypi.org/project/pip-audit/
+
+Python Software Foundation. (2026). *Python 3.11 documentation*. https://docs.python.org/3.11/
+
+Ruff. (2026). *Ruff documentation*. https://docs.astral.sh/ruff/
