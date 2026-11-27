@@ -4,7 +4,7 @@
 
 Pruebas primero (TDD) con `pytest`. Cada regla de negocio se expresa como particiones de
 equivalencia, valores límite y una tabla de decisión antes de escribir el código. Los esperados
-salem de la regla, no de ejecutar la implementación.
+salen de la regla, no de ejecutar la implementación.
 
 ## Cobertura de la lógica de negocio
 

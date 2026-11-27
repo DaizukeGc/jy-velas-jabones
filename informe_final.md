@@ -3,104 +3,160 @@
 Proyecto: JY Velas y Jabones — núcleo de inventario, pedidos y ventas
 Estudiante: Jhonier Santiago García Coqueco
 Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
-Fecha: 26 de noviembre de 2026
+Fecha: 2026-11-26
 
 ## 1. Resumen
 
-La dueña de una microempresa de velas y jabones artesanales en Neiva no podía saber con certeza cuánto material tenía antes de preparar una tanda: llevaba el control en hojas de cálculo y apuntes. Construí una librería de Python (Python Software Foundation, 2026) que registra compras, descuenta consumos y lista los materiales en su mínimo, con contrato explícito y sin dependencias de ejecución. Usé IA en las seis fases del ciclo de vida: para acotar el problema y la herramienta, extraer requisitos de una entrevista simulada, proponer diagramas y decisiones arquitectónicas, generar el código con TDD, crear particiones y pruebas, y revisar seguridad y dependencias. La verificación fue continua: pruebas en rojo y verde, ocho pruebas débiles corregidas, seis mutaciones que rompieron la suite, linter (Ruff, 2026) y auditoría de dependencias (Python Packaging Authority, 2026). Estado final: 116 pruebas superadas, Ruff sin avisos, pip-audit sin vulnerabilidades y siete hallazgos de seguridad corregidos. El resultado principal no fue que la IA escribiera código, sino que cada salida fue contrastada con una regla, una prueba o una herramienta antes de aceptarla.
+La dueña de una microempresa de velas y jabones artesanales en Neiva no podía saber con certeza cuánto material tenía antes de preparar una tanda: llevaba el control en hojas de cálculo y apuntes en papel. Construí una librería de Python (Python Software Foundation, 2026) que registra compras, descuenta consumos y lista los materiales en su mínimo, con contrato explícito y sin dependencias de ejecución. Usé inteligencia artificial (IA) en las seis fases del ciclo de vida: para acotar el problema y la herramienta, extraer requisitos de una entrevista simulada, proponer diagramas y decisiones arquitectónicas, generar el código con desarrollo guiado por pruebas (TDD), crear particiones y casos de prueba, y revisar seguridad y dependencias. La verificación fue continua: pruebas en rojo y verde, ocho pruebas débiles corregidas, seis mutaciones que rompieron la suite, linter (Ruff, 2026) y auditoría de dependencias (Python Packaging Authority, 2026). Estado final: 116 pruebas superadas, Ruff sin avisos, pip-audit sin vulnerabilidades y siete hallazgos de seguridad corregidos. El resultado principal no fue que la IA escribiera código, sino que cada salida fue contrastada con una regla, una prueba o una herramienta antes de aceptarla.
 
 **Palabras clave:** inteligencia artificial, ciclo de vida del software, pruebas, seguridad, inventario.
 
 ## 2. Problema y usuario
 
-El usuario es la dueña-operadora de JY Velas y Jabones. Antes de este proyecto registraba las entradas de cera, frascos y esencias en una hoja de cálculo y apuntaba los consumos en papel. Cuando llegaba el momento de producir, no tenía una forma confiable de saber si había stock ni qué materiales debía reponer, y las alertas aparecían tarde. Necesitaba tres operaciones simples: registrar una compra con fecha, descontar lo usado en una tanda sin pasarse del stock y consultar qué materiales están en o por debajo de su mínimo.
+El usuario es la dueña-operadora de JY Velas y Jabones, una microempresa artesanal ubicada en Neiva. Antes de este proyecto registraba las entradas de cera, frascos y esencias en una hoja de cálculo y apuntaba los consumos diarios en papel. Cuando llegaba el momento de producir una tanda, no tenía una forma confiable de saber si había stock suficiente ni qué materiales debía reponer, y las alertas de agotamiento aparecían tarde. El problema no era estético sino operativo: necesitaba tres operaciones simples y confiables para controlar su materia prima: registrar una compra con fecha, descontar lo consumido en una tanda sin pasarse del stock disponible y consultar qué materiales están en o por debajo de su mínimo de aviso.
 
-La propuesta inicial está en [docs/propuesta.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md) y el levantamiento en [docs/requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md). La entrevista fue simulada por un compañero, declarada así en la bitácora: no se usaron datos de personas reales. De once necesidades y diez historias, las tres Must del incremento son HU-01, HU-02 y HU-03, todas terminadas.
+La propuesta inicial del módulo 1 está documentada en [docs/propuesta.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md) y el levantamiento de requisitos del módulo 2 en [docs/requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md). La entrevista de levantamiento, compuesta por nueve preguntas sobre inventario, compras, consumos, alertas, pedidos, ventas, reportes, acceso multiusuario y persistencia, fue simulada por un compañero en el rol de la dueña y declarada explícitamente así en el repositorio: no se utilizaron datos de personas reales. A partir de esa sesión se relevaron 11 necesidades (`N-01` a `N-11`) y 10 historias de usuario, de las cuales las tres historias de prioridad *Must* del incremento son `HU-01`, `HU-02` y `HU-03` (50 % del conjunto *Must/Should*), todas terminadas y verificadas:
 
-El alcance se limitó a la capa de dominio y a su verificación: no se construyó interfaz, base de datos ni autenticación, porque ninguna de esas piezas aparece en los criterios de aceptación. Esa decisión quedó registrada en los [ADR](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md) y permitió que la dueña entendiera cada operación sin intermediarios técnicos. La solución se puede ejecutar con un solo comando de Python, como se muestra en la [guía de despliegue](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md).
+| Historia | Necesidad | Operación y criterio de aceptación principal | Estado | Evidencia |
+|---|---|---|---|---|
+| `HU-01` | `N-01`, `N-02` | Registrar compra con código, cantidad finita > 0 y fecha opcional; suma a la existencia y devuelve objeto inmutable `Compra`. | Terminada | [README.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/README.md), [test_registrar_compra.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_registrar_compra.py) |
+| `HU-02` | `N-01`, `N-03` | Descontar consumo de una tanda; falla con `ErrorInventario` si no hay stock suficiente y nunca deja el inventario negativo ni alterado. | Terminada | [requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md), [test_consumir_material.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_consumir_material.py) |
+| `HU-03` | `N-04` | Listar materiales con `existencia <= minimo` en el orden del catálogo, devolviendo copias seguras para evitar mutación externa. | Terminada | [inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [test_consultas_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_consultas_inventario.py) |
+
+El alcance se limitó de forma intencional a la capa de dominio y a su verificación automatizada: no se construyó interfaz gráfica, base de datos ni autenticación, porque ninguna de esas piezas aparecía en los criterios de aceptación del incremento. Esa decisión quedó registrada en [docs/adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md) (`ADR-001`) y permitió mantener un núcleo simple, portable y explicable sin intermediarios técnicos. La solución se instala y verifica localmente con comandos simples de Python, como detalla la [guía de despliegue](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md).
 
 ## 3. La IA en el ciclo de vida
 
+Utilicé OpenCode en modo agente dentro del IDE como asistente transversal en las seis fases del ciclo de vida del software, aplicando siempre la misma regla: la IA propone, y el criterio humano contrastado con el contrato, las pruebas o las herramientas automáticas decide qué se acepta, qué se ajusta y qué se rechaza.
+
 | Módulo y fase | Qué hice con IA | Herramienta | Evidencia (enlace) | Cómo verificaste |
 |---|---|---|---|---|
-| 1. Fundamentos | Convertir el problema en una propuesta acotada y decidir la herramienta prevista | OpenCode | [propuesta.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md) | Comprobé que el usuario, el problema y el alcance fueran verificables; fijé ADR-001 de solo biblioteca estándar |
-| 2. Requisitos | Extraer necesidades, historias y criterios Gherkin de la entrevista simulada | OpenCode | [requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md), [bitácora entrada 7](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) | Revisé cada esperado contra la regla y marqué la ambigüedad de `historial()` sin coincidencias |
-| 3. Diseño | Proponer contexto C4, secuencia, entidades y decisiones arquitectónicas | OpenCode + Mermaid CLI | [diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md), [adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md) | Contrasté los diagramas con el contrato y verifiqué que las nueve entidades y los ADR fueran coherentes con el código |
-| 4. Código | Implementar `Inventario`, `Material` y `Compra` con TDD y refactorizar | OpenCode | [inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [commit fc085c3](https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3) | Pruebas en rojo primero, verde después; Ruff y docstrings; el orden de validación se corrigió con una prueba |
-| 5. Pruebas | Generar particiones, valores límite, tablas de decisión y la suite parametrizada | OpenCode | [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md), [tests/](https://github.com/DaizukeGc/jy-velas-jabones/tree/main/tests) | Descarté ocho pruebas débiles, apliqué seis mutaciones y dejé 116 pruebas en verde |
-| 6. Operación | Revisar seguridad, configurar linter, auditar dependencias y documentar despliegue | OpenCode + Ruff (2026) + pip-audit (Python Packaging Authority, 2026) | [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [pipeline](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) | Tres hallazgos de la IA eran falsos positivos; la revisión manual añadió tres hallazgos reales y el pipeline quedó en verde |
+| 1. Fundamentos | Convertir el problema operativo en una propuesta acotada y definir el alcance del dominio | OpenCode | [docs/propuesta.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md) | Comprobé que el usuario, el problema y los criterios de éxito fueran verificables; fijé `ADR-001` de solo biblioteca estándar |
+| 2. Requisitos | Extraer necesidades (`N-01` a `N-11`), historias de usuario, requisitos no funcionales (`RNF-01` a `RNF-05`) y criterios Gherkin | OpenCode | [docs/requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md), [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) | Revisé cada esperado contra la regla de negocio y documenté la ambigüedad de `historial()` sin coincidencias |
+| 3. Diseño | Proponer diagramas de contexto C4, secuencia de compra, modelo de nueve entidades y registros ADR | OpenCode + Mermaid CLI | [docs/diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md), [docs/adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md) | Contrasté los diagramas con el contrato de 13 operaciones y verifiqué coherencia de las nueve entidades y los tres ADR con el código |
+| 4. Código | Implementar `Inventario`, `Material` y `Compra` siguiendo ciclo TDD (rojo-verde-refactor) | OpenCode | [jy_velas/inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [commit fc085c3](https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3), [commit 22bd352](https://github.com/DaizukeGc/jy-velas-jabones/commit/22bd352) | Pruebas en rojo primero (`1c66d73`), verde después (`fc085c3`), refactor sin alterar pruebas (`22bd352`); corregí el orden de validación |
+| 5. Pruebas | Generar particiones de equivalencia, valores límite, tablas de decisión, fixture sintético y suite parametrizada | OpenCode | [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md), [tests/](https://github.com/DaizukeGc/jy-velas-jabones/tree/main/tests) | Descarté o reescribí ocho pruebas débiles, ejecuté seis mutaciones (`M1` a `M6`) y validé 58 pruebas funcionales + 58 de abuso |
+| 6. Operación | Auditar seguridad con lista de verificación OWASP, configurar linter, fijar dependencias y documentar despliegue | OpenCode + Ruff (2026) + pip-audit (Python Packaging Authority, 2026) | [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) | Descarté dos falsos positivos de la IA (`math.isfinite` y hashing), añadí cuatro hallazgos manuales (`H-04` a `H-07`) y dejé el pipeline en verde |
+
+Cada interacción relevante quedó registrada en [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) con fecha, prompt o sugerencia, decisión, justificación, verificación y commit asociado. En total se documentaron **14 entradas**: **3 aceptadas** sin cambios, **7 aceptadas con cambios** y **4 rechazadas** por violar el alcance, introducir dependencias innecesarias o debilitar el contrato de errores.
 
 ## 4. Verificación: lo que la IA hizo mal y cómo lo encontraste
+
+La verificación sistemática reveló fallos concretos de la IA en cuatro fases distintas del ciclo de vida. En ninguno de los casos se modificó la regla de negocio para acomodar la salida del asistente.
 
 ### Caso 1: El histórico de un código inexistente
 
 - **Fase:** requisitos.
-- **Qué propuso la IA:** que `historial(codigo_inexistente)` lanzara `ErrorInventario`, igual que una compra sobre un material ausente.
-- **Qué estaba mal:** mezclaba una consulta con una operación de negocio. El criterio de aceptación solo hablaba de errores al registrar compras o consumir.
-- **Cómo lo detectaste:** al revisar la tabla de decisión contra el criterio, noté que ninguna regla exigía fallar en una consulta.
-- **Qué hice:** documenté la ambigüedad y decidí que devuelve lista vacía; quedó registrado en [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md) y con su prueba, en el commit [336eb98](https://github.com/DaizukeGc/jy-velas-jabones/commit/336eb98).
+- **Qué propuso la IA:** que `historial(codigo_inexistente)` lanzara `ErrorInventario`, igual que una compra o consumo sobre un material ausente.
+- **Qué estaba mal:** mezclaba una consulta de solo lectura con una operación transaccional de negocio. El criterio de aceptación en [docs/requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md) únicamente exigía errores al registrar compras o descontar consumos.
+- **Cómo lo detectaste:** al revisar la tabla de decisión contra el criterio de aceptación (entrada 7 de [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)), comprobé que ninguna regla exigía fallar en una consulta filtrada sin coincidencias.
+- **Qué hice:** documenté la ambigüedad, definí que `historial()` devuelve una lista vacía cuando no hay coincidencias y lo dejé respaldado en el docstring de [jy_velas/inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), en [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md) y en el commit [336eb98](https://github.com/DaizukeGc/jy-velas-jabones/commit/336eb98).
 
-### Caso 2: Persistencia y tipos de cantidad
+### Caso 2: Persistencia, dependencias y tipos de cantidad
 
 - **Fase:** código.
-- **Qué propuso la IA:** guardar las compras en SQLite o con pandas, y usar `decimal.Decimal` para las cantidades.
-- **Qué estaba mal:** agregaba dependencias y complejidad sin que el contrato lo pidiera, y rompía el ADR-001. Las cantidades son magnitudes físicas, no dinero.
-- **Cómo lo detectaste:** comparé el ADR con el criterio de aceptación y comprobé que `pytest.approx` ya cubría los decimales de las pruebas (pytest, 2026).
-- **Qué hice:** rechacé ambas sugerencias, dejé solo la biblioteca estándar y documenté la decisión en las entradas 3 y 6 de [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md); implementación en el commit [fc085c3](https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3).
+- **Qué propuso la IA:** persistir las compras en SQLite o con `pandas`, usar `decimal.Decimal` para las cantidades y, en iteraciones posteriores, emplear `assert` en producción o añadir `python-dotenv`.
+- **Qué estaba mal:** agregaba dependencias y complejidad fuera del alcance, rompía el `ADR-001` (solo biblioteca estándar) y confundía magnitudes físicas (gramos, mililitros, unidades) con montos monetarios; además, `assert` desaparece con `python -O` y no produce `ErrorInventario`.
+- **Cómo lo detectaste:** contrasté las propuestas contra [docs/adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md), el criterio de aceptación y la regla `S101` de Ruff; comprobé que `float` con `pytest.approx` cubría los decimales físicos sin sobrecarga (pytest, 2026).
+- **Qué hice:** rechacé SQLite, `pandas`, `Decimal`, `assert` en producción y `python-dotenv`; documenté las decisiones en las entradas 3, 6, 12 y 13 de [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) e implementé el núcleo en biblioteca estándar en el commit [fc085c3](https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3).
 
-### Caso 3: Ocho pruebas débiles
+### Caso 3: Ocho pruebas débiles y verificación por mutaciones
 
 - **Fase:** pruebas.
-- **Qué propuso la IA:** aserciones como `is not None`, `pytest.raises(Exception)`, un esperado de consumo que devolvía cero al pasarse del stock, una prueba de fecha que ignoraba la fecha explícita y un mínimo con `<` en vez de `<=`.
-- **Qué estaba mal:** habrían pasado aunque el código estuviera equivocado; el esperado salía del código y no de la regla.
-- **Cómo lo detectaste:** revisé cada prueba contra la tabla de decisión y ejecuté seis mutaciones (M1 a M6); las pruebas corregidas fallaron con todas ellas.
-- **Cómo lo corregí:** reescribí los esperados desde la regla, conservé 58 casos y documenté el proceso en [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md) y [mutaciones_semana7.txt](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt), commits [0c558bf](https://github.com/DaizukeGc/jy-velas-jabones/commit/0c558bf) y [336eb98](https://github.com/DaizukeGc/jy-velas-jabones/commit/336eb98).
+- **Qué propuso la IA:** aserciones genéricas como `is not None`, `pytest.raises(Exception)`, un esperado de consumo que devolvía `0` al pasarse del stock, una prueba de fecha que esperaba `date.today()` ignorando la fecha explícita y una verificación de mínimo con `<` en lugar de `<=`.
+- **Qué estaba mal:** las pruebas habrían pasado aun con la lógica rota porque los esperados se habían inferido del código o eran demasiado permisivos, en lugar de derivarse de la regla de negocio.
+- **Cómo lo detectaste:** revisé cada caso contra las particiones, valores límite y tablas de decisión, y ejecuté seis mutaciones intencionales (`M1` a `M6`) sobre `jy_velas/inventario.py` (SHA-256 original y restaurado `55c789b762ca76585c290dca7ef46ddd062d560c45a537c0d69f409bbbb4506d`).
+- **Qué hice:** reescribí o descarté las ocho pruebas débiles, consolidé 58 pruebas funcionales parametrizadas en [0c558bf](https://github.com/DaizukeGc/jy-velas-jabones/commit/0c558bf) y registré las mutaciones en [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md) y [docs/mutaciones_semana7.txt](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt), commit [336eb98](https://github.com/DaizukeGc/jy-velas-jabones/commit/336eb98):
 
-### Caso 4: Falsos positivos de seguridad y estado mutable
+| Mutación | Cambio introducido en `jy_velas/inventario.py` | ¿Detectada? | Pruebas que fallaron |
+|---|---|---|---|
+| `M1` | Cambiar `<=` por `<` en la validación de cantidad | Sí | 4 pruebas (compra y consumo con `0` y tablas de decisión) |
+| `M2` | Cambiar `>` por `>=` en la validación de stock | Sí | 1 prueba (`consumir_descuenta_existencia[MAT-FRASCO-10-10-0]`) |
+| `M3` | Cambiar el descuento por una suma en `consumir_material` | Sí | 4 pruebas de descuento de existencia y tabla de decisión |
+| `M4` | Cambiar `<=` por `<` en la alerta de mínimo | Sí | 3 pruebas de límite exacto `5/5` y `0/0` |
+| `M5` | Ignorar la fecha personalizada en `registrar_compra` | Sí | 1 prueba (`test_fecha_personalizada_se_conserva`) |
+| `M6` | Aceptar `NaN` e infinito (quitar `math.isfinite`) | Sí | 4 pruebas de valores no finitos en compra y consumo |
+
+### Caso 4: Falsos positivos de seguridad, riesgos omitidos y estado mutable
 
 - **Fase:** operación.
-- **Qué propuso la IA:** que `math.isfinite` era ejecución dinámica de código y que faltaba hashing de contraseñas con bcrypt/argon2. No detectó los códigos duplicados ni que `materiales_bajo_minimo` devolviera referencias mutables.
-- **Qué estaba mal:** los dos primeros son falsos positivos (no hay `eval`, ni usuarios ni contraseñas); los otros dos son riesgos reales de integridad (OWASP Foundation, 2021).
-- **Cómo lo detectaste:** leí línea por línea contra el commit `fe00949`, ejecuté Ruff y escribí 58 pruebas de abuso con tipos inválidos, `NaN`, longitudes excesivas y duplicados.
-- **Qué hice:** descarté los falsos positivos, corregí siete hallazgos y dejé la evidencia en [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md) y [test_seguridad_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py), commit [95118b9](https://github.com/DaizukeGc/jy-velas-jabones/commit/95118b9).
+- **Qué propuso la IA:** en la auditoría de seguridad señaló tres problemas reales (`H-01` a `H-03`), pero reportó dos falsos positivos: que `math.isfinite` implicaba ejecución dinámica de código y que faltaba hashing seguro de contraseñas con `bcrypt`/`argon2`. Al mismo tiempo, omitió riesgos reales en `Material`, códigos duplicados, referencias mutables y configuración del proyecto.
+- **Qué estaba mal:** los dos primeros avisos son falsos positivos (no existe `eval`/`exec`, ni usuarios ni contraseñas), mientras que los riesgos omitidos comprometen la integridad de datos y el control de estado interno (OWASP Foundation, 2021).
+- **Cómo lo detectaste:** inspeccioné línea por línea el código frente al commit `fe00949`, ejecuté Ruff y `pip-audit`, y diseñé 58 pruebas de abuso en [tests/test_seguridad_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py) con `bool`, tipos no hashables, `NaN`, longitudes excesivas y códigos duplicados.
+- **Qué hice:** descarté los dos falsos positivos, corregí los siete hallazgos reales (`H-01` a `H-07`) añadiendo validaciones en `Material.__post_init__`, rechazo de duplicados en `Inventario.__init__`, copias con `dataclasses.replace` en `materiales_bajo_minimo()`, fijación de `pytest==9.2.0` y configuración de Ruff (`E`, `F`, `B`, `S`), dejando la evidencia en [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md) y en el commit [95118b9](https://github.com/DaizukeGc/jy-velas-jabones/commit/95118b9).
 
 ## 5. Estado final del sistema
 
-El sistema se entrega como una librería importable, no como un servidor: cada regla vive en una función con docstring y cada error de negocio tiene un mensaje estable. Eso permite que una futura interfaz web o móvil reutilice el mismo contrato sin reescribir la lógica, y facilita que cualquier línea del código pueda explicarse en la sustentación.
+El sistema se entrega como una librería de dominio importable en Python 3.11, sin servidor ni estado oculto: cada regla de negocio vive en una función documentada con docstring y cada falla controlada lanza `ErrorInventario` con un mensaje estable. Esta separación permite que una futura interfaz web o móvil reutilice el mismo contrato sin reescribir la lógica de inventario.
 
-- **Arquitectura:** librería Python de un solo módulo de dominio (`jy_velas/inventario.py`), sin dependencias de ejecución, con datos en memoria y contrato reutilizable por una futura interfaz. Diagramas y ADR en [diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md) y [adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md).
-- **Funcionalidades terminadas:** HU-01 registrar compras, HU-02 consumir materiales y HU-03 alertas de mínimo. Las tres historias Must del incremento están completas; las demás del levantamiento quedan para iteraciones posteriores.
-- **Pruebas:** 116 pruebas parametrizadas (21 + 20 + 17 + 58) ejecutadas con pytest (2026). Última ejecución en [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md): 116 passed, Ruff sin avisos y pip-audit sin vulnerabilidades. Cobertura de reglas de negocio y abuso en [plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md).
-- **Pendientes:** persistencia entre sesiones (N-09), interfaz web o móvil, roles de usuario e integración continua de Ruff y pip-audit. Se difirieron porque no están en el criterio de aceptación de este incremento y porque el ADR-001 prioriza un núcleo simple.
+- **Arquitectura:** módulo único de dominio ([jy_velas/inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py)) usando únicamente `dataclasses`, `datetime`, `math` y `typing`, con datos en memoria. El diseño contempla nueve entidades (`Material`, `Compra`, `Consumo`, `Producto`, `Receta`, `Pedido`, `ItemPedido`, `Venta`, `Cliente`) y trece operaciones; en este incremento se implementaron `Material`, `Compra` y las cinco operaciones del núcleo (`registrar_compra`, `existencia`, `historial`, `consumir_material`, `materiales_bajo_minimo`). Diagramas C4/secuencia y decisiones en [docs/diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md) y [docs/adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md).
+- **Funcionalidades terminadas:** las tres historias *Must* (`HU-01`, `HU-02` y `HU-03`) están terminadas, con validación previa a cualquier mutación de estado, rechazo de valores no finitos y devolución de copias inmutables.
+- **Pruebas y verificación del pipeline:** la suite completa alcanza **116 pruebas parametrizadas** ejecutadas con pytest 9.2.0 (2026). La última ejecución registrada en [docs/pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) y en [docs/plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md) confirma el estado en verde:
+
+| Verificación | Alcance | Resultado observado |
+|---|---|---|
+| `python -m ruff check .` | Reglas `E`, `F`, `B`, `S` (línea 88) en código y pruebas | `All checks passed!` |
+| `python -m pip_audit -r requirements-dev.txt` | Dependencia de desarrollo fijada (`pytest==9.2.0`); cero dependencias de ejecución | `No known vulnerabilities found` |
+| `python -m pytest -q` (compras `HU-01`) | [tests/test_registrar_compra.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_registrar_compra.py) | `21` pruebas superadas |
+| `python -m pytest -q` (consumo `HU-02`) | [tests/test_consumir_material.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_consumir_material.py) | `20` pruebas superadas |
+| `python -m pytest -q` (consultas `HU-03`) | [tests/test_consultas_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_consultas_inventario.py) | `17` pruebas superadas |
+| `python -m pytest -q` (abuso y seguridad) | [tests/test_seguridad_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py) | `58` pruebas superadas |
+| **Total del pipeline** | **Suite completa + calidad + auditoría** | **`116 passed in 0.60s`** |
+
+- **Pendientes:** persistencia entre sesiones (`N-09`), módulos de clientes, pedidos, ventas y reportes (`N-06` a `N-08`), interfaz web o móvil (`N-11`), roles multiusuario (`N-10`) e integración continua automatizada de Ruff y `pip-audit` en GitHub. Se difirieron porque no pertenecen a los criterios de aceptación del incremento y porque `ADR-001` prioriza consolidar primero el núcleo de reglas de negocio.
 
 ## 6. Reflexión ética y legal
 
 | Principio | Decisión en mi proyecto | Evidencia |
 |---|---|---|
-| Datos personales (Ley 1581 de 2012) | No hay datos personales reales: la entrevista fue simulada por un compañero y el catálogo usa materiales ficticios con tildes y apóstrofos | [requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md), [conftest.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/conftest.py) |
-| Sesgo | El sistema no decide sobre personas: solo aplica reglas numéricas a materiales. Rechacé `bool` como cantidad para evitar que `True` se contara como una unidad | [inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [test_seguridad_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py) |
-| Transparencia | Cada error de negocio tiene un mensaje estable y explicable; los ADR y la bitácora explican por qué se tomó cada decisión | [adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md), [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) |
-| Responsabilidad | Yo verifico y respondo por el código; la IA propuso, pero las pruebas, el linter y la lectura manual decidieron qué se aceptaba | [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [pipeline](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) |
-| Propiedad intelectual y política de uso | Código propio con fines académicos, licencia declarada en el README; uso de IA declarado entrada por entrada | [README.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/README.md), [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) |
+| Datos personales (Ley 1581 de 2012) | No hay datos personales reales: la entrevista fue simulada por un compañero y el catálogo usa materiales ficticios con tildes, eñe y apóstrofos («Jabón de avena y ñame «Relámpago»», «Aroma d' naranja»). | [docs/requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md), [tests/conftest.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/conftest.py) |
+| Sesgo | El sistema no decide sobre personas ni perfiles crediticios: solo aplica reglas aritméticas deterministas sobre materiales. Rechacé `bool` como cantidad para impedir que `True` se contara como una unidad. | [jy_velas/inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [tests/test_seguridad_inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py) |
+| Transparencia | Cada error de negocio tiene un mensaje estable y comprensible (`ErrorInventario`); los ADR y la bitácora explican el porqué de cada decisión técnica. | [docs/adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md), [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) |
+| Responsabilidad | Yo verifico y respondo por el código entregado; la IA propuso borradores, pero las pruebas, las mutaciones, Ruff y la lectura manual decidieron qué se aceptaba. | [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md) |
+| Propiedad intelectual y política de uso | Código propio con fines académicos; uso del asistente declarado entrada por entrada y decisiones rechazadas documentadas con trazabilidad a commits. | [README.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/README.md), [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) |
 
-El dilema más importante fue aceptar o no las pruebas generadas por IA. Era tentador quedarse con 58 pruebas que pasaban y ahorrar tiempo, pero ocho comprobaban el estado en vez de la regla. Si las hubiera aceptado, el sistema habría parecido correcto con stock insuficiente y fechas ignoradas. Decidí borrarlas, reescribirlas desde el criterio de aceptación y ejecutar mutaciones para demostrar que fallaban cuando el código se rompía. La responsabilidad por ese juicio fue mía, no del asistente.
+El dilema ético más importante que enfrenté fue aceptar o no las pruebas generadas inicialmente por la IA. Resultaba tentador conservar la suite tal como salió, con decenas de aserciones en verde que ahorraban tiempo de entrega; sin embargo, ocho de ellas comprobaban únicamente que no hubiera excepción genérica o que el resultado no fuera nulo, e incluso validaban un consumo excesivo devolviendo cero o ignorando la fecha explícita. Si las hubiera dejado, habría entregado evidencia engañosa de un sistema que corrompía el stock en casos límite. Decidí borrarlas, derivar los esperados directamente desde los criterios de aceptación y aplicar seis mutaciones para demostrar que la suite fallaba cuando el código se rompía. La responsabilidad técnica y ética de ese juicio fue mía, no del asistente.
 
 ## 7. Aprendizajes
 
-Aprendí a escribir un contrato antes de pedir código, a derivar pruebas de particiones y tablas de decisión, a ejecutar mutaciones para medir si una prueba sirve y a auditar dependencias con pip-audit. Confié demasiado en la IA al inicio: acepté sin revisar la idea de usar `Decimal` y una primera versión que sumaba la cantidad antes de validarla. También aprendí que un falso positivo puede desperdiciar tiempo y que un hallazgo real puede estar justo donde la IA no miró. Haría tres cosas distinto:
+A lo largo de los seis módulos aprendí a redactar un contrato verificable antes de pedir código, a derivar casos de prueba desde particiones de equivalencia, valores límite y tablas de decisión, a usar mutaciones para comprobar la eficacia real de una suite y a integrar análisis estático (`ruff`) y auditoría de dependencias (`pip-audit`) como filtros objetivos. Al principio confié demasiado en las propuestas iniciales de la IA: acepté sin cuestionar suficiente el uso de `Decimal` y una versión temprana que sumaba la cantidad comprada antes de validarla. También comprobé que un falso positivo de seguridad consume tiempo si no se contrasta con el código real, mientras que un riesgo verdadero (como referencias mutables o códigos duplicados) suele quedar justo donde el asistente no miró. En un próximo proyecto haría tres cosas distinto:
 
-- Escribiría la tabla de casos límite antes de pedir la implementación, para que el esperado viniera de la regla y no del código.
-- Dejaría Ruff y pip-audit como parte normal del ciclo desde la primera semana, no al final.
-- Pediría a la IA que explique sus supuestos antes de aceptar una sugerencia; así habría detectado antes lo de `Decimal` y el orden de las validaciones.
+- Escribiría la tabla de casos límite y ambigüedades antes de pedir la implementación, asegurando que cada esperado salga de la regla y no del código generado.
+- Integraría Ruff y `pip-audit` desde la primera semana dentro del ciclo habitual de trabajo, no únicamente en la etapa final de operación.
+- Exigiría a la IA explicitar sus supuestos técnicos antes de aceptar una sugerencia arquitectónica o de tipos, evitando así desvíos tempranos como `Decimal` o validaciones en orden incorrecto.
 
 ## 8. Anexos
 
-- Bitácora de uso de IA: [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md) (14 entradas).
-- Propuesta y requisitos: [propuesta.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md), [requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md).
-- Diseño y ADR: [diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md), [adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md).
-- Plan de pruebas y mutaciones: [plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md), [mutaciones_semana7.txt](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt).
-- Seguridad, despliegue y operación: [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [despliegue.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md), [operacion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/operacion.md).
-- Última ejecución del pipeline: [pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md).
+### Enlaces a evidencias del repositorio
+
+- Bitácora completa de uso de IA (14 entradas): [bitacora_ia.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md).
+- Propuesta (Módulo 1) y requisitos (Módulo 2): [docs/propuesta.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md), [docs/requisitos.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md).
+- Diseño (Módulo 3) y decisiones arquitectónicas (ADR): [docs/diseno.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md), [docs/adr.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md).
+- Código fuente y pruebas (Módulos 4 y 5): [jy_velas/inventario.py](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py), [tests/](https://github.com/DaizukeGc/jy-velas-jabones/tree/main/tests).
+- Plan de pruebas, registro formal y mutaciones: [docs/plan_de_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md), [registro_pruebas.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md), [docs/mutaciones_semana7.txt](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt).
+- Seguridad, despliegue y operación (Módulo 6): [revision_seguridad.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md), [docs/despliegue.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md), [docs/operacion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/operacion.md).
+- Última ejecución del pipeline: [docs/pipeline_ultima_ejecucion.md](https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md).
+
+### Anexo A. Resumen cuantitativo de la bitácora de IA
+
+| Etapa documentada | Entradas | Aceptadas | Aceptadas con cambios | Rechazadas |
+|---|---|---|---|---|
+| Semana 5 (Módulo 4 — `HU-01`) | Entradas 1 a 6 | 2 | 2 | 2 |
+| Semana 7 (Módulo 5 — Pruebas y mutaciones) | Entradas 7 a 10 | 1 | 3 | 0 |
+| Semana 6 (Módulo 6 — Seguridad e informe) | Entradas 11 a 14 | 0 | 2 | 2 |
+| **Total registrado** | **14 entradas** | **3** | **7** | **4** |
+
+### Anexo B. Síntesis de los siete hallazgos de seguridad corregidos (`95118b9`)
+
+| Id | Origen | Riesgo mitigado y categoría OWASP | Corrección aplicada |
+|---|---|---|---|
+| `H-01` | IA + verificación manual | Aceptación de `bool` y `TypeError` en `_validar_cantidad` (`A03:2021`) | Comprobación explícita de `(int, float)` excluyendo `bool` y exigiendo `math.isfinite` |
+| `H-02` | IA + verificación manual | Falta de validación de tipo en `fecha` (`A04:2021`) | Nuevo método `_validar_fecha` que solo admite `None` o `datetime.date` |
+| `H-03` | IA + verificación manual | Códigos no hashables o desbordados en `_buscar_material` (`A03:2021` / `A04:2021`) | Validación de `str` no vacío con longitud máxima de 50 caracteres |
+| `H-04` | Inspección manual | `Material` permitía existencia o mínimo negativos o no finitos (`A04:2021`) | Validación en `Material.__post_init__` de tipos, finitud y límites de longitud |
+| `H-05` | Inspección manual | `Inventario.__init__` sobrescribía códigos duplicados en silencio (`A04:2021`) | Detección temprana de duplicados con `ErrorInventario` |
+| `H-06` | Inspección manual | `materiales_bajo_minimo` devolvía referencias mutables (`A01:2021`) | Devolución de copias independientes con `dataclasses.replace` |
+| `H-07` | Inspección manual + Ruff | Falta de configuración de Ruff, `pytest>=8.0` sin fijar y líneas `E501` (`A06:2021`) | Reglas `E,F,B,S` en `pyproject.toml`, `pytest==9.2.0` fijado y líneas divididas |
 
 ## Referencias
 
@@ -108,11 +164,15 @@ Fundación Escuela Tecnológica de Neiva. (2026). *Proyecto integrador: tarea fi
 
 García Coqueco, J. S. (2026). *JY Velas y Jabones* [Repositorio de código]. GitHub. https://github.com/DaizukeGc/jy-velas-jabones
 
+Myers, G. J., Sandler, C., & Badgett, T. (2011). *The art of software testing* (3.ª ed.). John Wiley & Sons.
+
 OpenCode. (2026). *Documentación de OpenCode*. https://opencode.ai
 
 OWASP Foundation. (2021). *OWASP Top 10:2021*. https://owasp.org/Top10/
 
-pytest. (2026). *pytest documentation*. https://docs.pytest.org/
+Pressman, R. S., & Maxim, B. R. (2015). *Software engineering: A practitioner's approach* (8.ª ed.). McGraw-Hill Education.
+
+pytest. (2026). *pytest documentation* (Versión 9.2.0). https://docs.pytest.org/
 
 Python Packaging Authority. (2026). *pip-audit* [Paquete de PyPI]. https://pypi.org/project/pip-audit/
 

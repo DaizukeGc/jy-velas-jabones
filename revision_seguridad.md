@@ -62,17 +62,15 @@
 
 | Id | Archivo y línea | Problema | Categoría OWASP | Severidad | Corrección | Commit |
 |---|---|---|---|---|---|---|
-| H-01 | `jy_velas/inventario.py:109-113` | `_validar_cantidad` no verifica el tipo: `bool` se acepta como `1` y un valor no numérico lanza `TypeError` en `math.isfinite`. | A03:2021 — Injection (validación de entradas) / CWE-20 | Media | Se añadió `isinstance(cantidad, (int, float))`, rechazo de `bool`, `math.isfinite` y `cantidad > 0`; se mantiene `ErrorInventario`. | Por registrar |
-| H-02 | `jy_velas/inventario.py:49-56` | `registrar_compra` no valida `fecha`; acepta cualquier objeto y lo almacena en `Compra`. | A04:2021 — Diseño inseguro / Integridad de datos | Media | Se añadió `_validar_fecha`, que exige `None` o `datetime.date`; en caso contrario lanza `ErrorInventario`. | Por registrar |
-| H-03 | `jy_velas/inventario.py:102-107` | `_buscar_material` no valida el tipo ni la longitud de `codigo`; un código no hashable lanza `TypeError` y uno gigante puede consumir memoria. | A03:2021 — Injection / A04:2021 — Diseño inseguro | Media | Se valida que `codigo` sea `str` no vacío y de máximo 50 caracteres antes de consultar el diccionario; se conserva el mensaje de material no registrado. | Por registrar |
-| H-04 | `jy_velas/inventario.py:22-30` | `Material` permite `existencia` y `minimo` negativos, `NaN` o `inf`, dejando el catálogo en estado inconsistente. | A04:2021 — Diseño inseguro / Integridad de datos | Media | Se añadió `__post_init__`, que exige números finitos no negativos y longitudes máximas para `codigo`, `nombre` y `unidad`. | Por registrar |
-| H-05 | `jy_velas/inventario.py:45-47` | `Inventario.__init__` sobrescribe silenciosamente materiales con el mismo código; se pierde existencia y mínimo. | A04:2021 — Diseño inseguro / Integridad de datos | Media | Se detectan códigos duplicados y se lanza `ErrorInventario` antes de construir el catálogo. | Por registrar |
-| H-06 | `jy_velas/inventario.py:91-100` | `materiales_bajo_minimo` devuelve referencias a los objetos `Material` internos, que son mutables; un llamador puede alterar el catálogo sin pasar por las reglas. | A01:2021 — Broken Access Control / Exposición de estado interno | Baja | Se devuelven copias con `dataclasses.replace` para que el llamador no pueda mutar el estado interno. | Por registrar |
-| H-07 | `pyproject.toml`; `requirements-dev.txt`; `inventario.py:49, 50, 54, 107` | Falta configuración de Ruff, `pytest>=8.0` no estaba fijado y cuatro líneas de `inventario.py` superaban 88 caracteres (E501). | A06:2021 — Componentes vulnerables y desactualizados / Mantenibilidad | Baja | Se añadió configuración de Ruff (E, F, B, S, línea 88, S101 ignorado en `tests`), se fijó `pytest==9.2.0` y se dividieron las líneas largas; `ruff check .` y `pip-audit` sin errores. | Por registrar |
+| H-01 | `jy_velas/inventario.py:109-113` | `_validar_cantidad` no verifica el tipo: `bool` se acepta como `1` y un valor no numérico lanza `TypeError` en `math.isfinite`. | A03:2021 — Injection (validación de entradas) / CWE-20 | Media | Se añadió `isinstance(cantidad, (int, float))`, rechazo de `bool`, `math.isfinite` y `cantidad > 0`; se mantiene `ErrorInventario`. | `95118b9` |
+| H-02 | `jy_velas/inventario.py:49-56` | `registrar_compra` no valida `fecha`; acepta cualquier objeto y lo almacena en `Compra`. | A04:2021 — Diseño inseguro / Integridad de datos | Media | Se añadió `_validar_fecha`, que exige `None` o `datetime.date`; en caso contrario lanza `ErrorInventario`. | `95118b9` |
+| H-03 | `jy_velas/inventario.py:102-107` | `_buscar_material` no valida el tipo ni la longitud de `codigo`; un código no hashable lanza `TypeError` y uno gigante puede consumir memoria. | A03:2021 — Injection / A04:2021 — Diseño inseguro | Media | Se valida que `codigo` sea `str` no vacío y de máximo 50 caracteres antes de consultar el diccionario; se conserva el mensaje de material no registrado. | `95118b9` |
+| H-04 | `jy_velas/inventario.py:22-30` | `Material` permite `existencia` y `minimo` negativos, `NaN` o `inf`, dejando el catálogo en estado inconsistente. | A04:2021 — Diseño inseguro / Integridad de datos | Media | Se añadió `__post_init__`, que exige números finitos no negativos y longitudes máximas para `codigo`, `nombre` y `unidad`. | `95118b9` |
+| H-05 | `jy_velas/inventario.py:45-47` | `Inventario.__init__` sobrescribe silenciosamente materiales con el mismo código; se pierde existencia y mínimo. | A04:2021 — Diseño inseguro / Integridad de datos | Media | Se detectan códigos duplicados y se lanza `ErrorInventario` antes de construir el catálogo. | `95118b9` |
+| H-06 | `jy_velas/inventario.py:91-100` | `materiales_bajo_minimo` devuelve referencias a los objetos `Material` internos, que son mutables; un llamador puede alterar el catálogo sin pasar por las reglas. | A01:2021 — Broken Access Control / Exposición de estado interno | Baja | Se devuelven copias con `dataclasses.replace` para que el llamador no pueda mutar el estado interno. | `95118b9` |
+| H-07 | `pyproject.toml`; `requirements-dev.txt`; `inventario.py:49, 50, 54, 107` | Falta configuración de Ruff, `pytest>=8.0` no estaba fijado y cuatro líneas de `inventario.py` superaban 88 caracteres (E501). | A06:2021 — Componentes vulnerables y desactualizados / Mantenibilidad | Baja | Se añadió configuración de Ruff (E, F, B, S, línea 88, S101 ignorado en `tests`), se fijó `pytest==9.2.0` y se dividieron las líneas largas; `ruff check .` y `pip-audit` sin errores. | `95118b9` |
 
-> La columna **Commit** queda en «Por registrar» porque las correcciones están en
-> el árbol de trabajo; los commits atómicos se crearán al integrarlas en el
-> repositorio local.
+> Los siete hallazgos (`H-01` a `H-07`) y las 58 pruebas de abuso quedaron integrados en el commit `95118b9`.
 
 ### Avisos del linter no corregidos
 
@@ -120,7 +118,6 @@ del código ni la ejecución de las herramientas.
 
 | Pendiente | Por qué no se corrigió | Plan |
 |---|---|---|
-| Registrar los hashes individuales en la columna **Commit** de la tabla de hallazgos. | Los cambios están en el árbol de trabajo; los commits atómicos se crean al integrar las correcciones en el repositorio local. | Ejecutar `git add` y `git commit` por hallazgo, luego `git log --oneline` y actualizar la columna **Commit** antes del `push` final a `main`. |
 | Integración continua de Ruff y `pip-audit`. | El proyecto todavía no tiene un flujo de integración continua configurado. | Añadir un flujo que ejecute `ruff check`, `pip-audit` y `pytest` en cada `push` a `main`. |
 | Pruebas de carga y análisis dinámico en navegador. | El proyecto no tiene interfaz web ni base de datos; no aplica en esta iteración. | Reevaluar cuando se agregue la interfaz o la persistencia. |
 

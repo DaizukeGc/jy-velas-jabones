@@ -105,7 +105,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada con cambios
 - **Por qué:** La IA entregó la estructura de cuatro partes y la mayoría de los hallazgos de validación, pero dejó fuera el duplicado de códigos, los objetos internos mutables y la fijación de dependencias. Añadí esos tres puntos (H-05, H-06 y H-07), separé los falsos positivos y registré las categorías OWASP con su severidad.
 - **Verificación:** Contrasté cada hallazgo contra el commit `fe00949` línea por línea y ejecuté `ruff check .` y `pip-audit`; el resultado quedó en `revision_seguridad.md`.
-- **Commit relacionado:** por registrar en el cierre de la semana 6
+- **Commit relacionado:** 95118b9 — fix: validaciones de seguridad y pruebas de abuso (semana 6)
 
 ### Entrada 12
 
@@ -114,7 +114,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Rechazada
 - **Por qué:** `assert` desaparece con `python -O` y lanza `AssertionError`, no un error de negocio. El contrato exige `ErrorInventario` con mensajes estables para la interfaz. Por eso se mantuvo `raise ErrorInventario(...)` en `_validar_cantidad`, `_validar_fecha` y `_buscar_material`.
 - **Verificación:** Las 58 pruebas originales y las 58 pruebas de abuso nuevas comprueban los mensajes exactos. Ruff solo ignora `S101` en `tests/*`, nunca en producción.
-- **Commit relacionado:** por registrar en el cierre de la semana 6
+- **Commit relacionado:** 95118b9 — fix: validaciones de seguridad y pruebas de abuso (semana 6)
 
 ### Entrada 13
 
@@ -123,7 +123,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Rechazada
 - **Por qué:** El ADR-001 pide solo biblioteca estándar en el núcleo y el proyecto no tiene credenciales ni servicios externos. Agregar la dependencia aumentaría la superficie de ataque sin resolver un problema real.
 - **Verificación:** `pip-audit` no reporta vulnerabilidades; el núcleo sigue sin dependencias de ejecución. Añadí `.env.example` como plantilla vacía y confirmé que `.gitignore` excluye `.env` y `.env.*`.
-- **Commit relacionado:** por registrar en el cierre de la semana 6
+- **Commit relacionado:** 95118b9 — fix: validaciones de seguridad y pruebas de abuso (semana 6)
 
 ### Entrada 14
 
@@ -132,7 +132,7 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada con cambios
 - **Por qué:** La IA acertó en la clasificación de la validación de entradas, pero marcó `math.isfinite` como ejecución dinámica y pidió hashing de contraseñas en un proyecto sin usuarios: ambos son falsos positivos. En el informe final corregí esas afirmaciones y enlacé cada fase a su evidencia real.
 - **Verificación:** Revisé cada clasificación contra el código y las pruebas; el informe final quedó en `informe_final.md` y su PDF en `docs/informe_final_integrador.pdf`.
-- **Commit relacionado:** por registrar en el cierre de la semana 6
+- **Commit relacionado:** 5344f7a, 90af2de y 4d8f14 (actualizado en el cierre final)
 
 ## Resumen
 
