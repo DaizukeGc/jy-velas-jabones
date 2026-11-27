@@ -1,0 +1,621 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 13 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md)
+>> /Border [ 0 0 0 ] /Rect [ 199.6539 185.6661 301.9642 198.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+5 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md)
+>> /Border [ 0 0 0 ] /Rect [ 403.2529 185.6661 512.4814 198.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+6 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md)
+>> /Border [ 0 0 0 ] /Rect [ 246.1179 66.66614 274.7191 79.86614 ] /Subtype /Link /Type /Annot
+>>
+endobj
+7 0 obj
+<<
+/Annots [ 4 0 R 5 0 R 6 0 R ] /Contents 68 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+8 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md)
+>> /Border [ 0 0 0 ] /Rect [ 177.0159 753.6661 269.9659 766.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 650.7411 368.1374 662.7411 ] /Subtype /Link /Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 594.0661 366.6254 604.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)
+>> /Border [ 0 0 0 ] /Rect [ 371.6294 594.0661 403.6424 604.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 582.0661 351.1364 592.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+13 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+14 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 538.0661 354.6284 548.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+15 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md)
+>> /Border [ 0 0 0 ] /Rect [ 359.6324 538.0661 387.6404 548.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+16 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 470.0661 364.1324 480.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+17 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3)
+>> /Border [ 0 0 0 ] /Rect [ 369.1364 470.0661 398.1344 480.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+18 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 458.0661 344.6294 468.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+19 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 402.0661 395.6414 412.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+20 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/tree/main/tests)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 390.0661 334.6214 400.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+21 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 346.0661 403.6424 356.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+22 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md)
+>> /Border [ 0 0 0 ] /Rect [ 313.1114 334.0661 344.1254 344.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+23 0 obj
+<<
+/Annots [ 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 
+  19 0 R 20 0 R 21 0 R 22 0 R ] /Contents 69 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+24 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md)
+>> /Border [ 0 0 0 ] /Rect [ 74.69291 753.6661 175.5629 766.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+25 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/336eb98)
+>> /Border [ 0 0 0 ] /Rect [ 328.4079 753.6661 371.2199 766.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+26 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)
+>> /Border [ 0 0 0 ] /Rect [ 238.5599 532.6661 310.6979 545.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+27 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/fc085c3)
+>> /Border [ 0 0 0 ] /Rect [ 462.2999 532.6661 500.8219 545.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+28 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/registro_pruebas.md)
+>> /Border [ 0 0 0 ] /Rect [ 132.1679 293.6661 233.0379 306.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+29 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt)
+>> /Border [ 0 0 0 ] /Rect [ 244.6539 293.6661 366.9299 306.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+30 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/0c558bf)
+>> /Border [ 0 0 0 ] /Rect [ 417.0459 293.6661 456.1839 306.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+31 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/336eb98)
+>> /Border [ 0 0 0 ] /Rect [ 467.7999 293.6661 510.6119 306.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+32 0 obj
+<<
+/Annots [ 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R ] /Contents 70 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+33 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md)
+>> /Border [ 0 0 0 ] /Rect [ 74.69291 753.6661 185.3419 766.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+34 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py)
+>> /Border [ 0 0 0 ] /Rect [ 196.9579 753.6661 337.5819 766.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+35 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/commit/95118b9)
+>> /Border [ 0 0 0 ] /Rect [ 382.1979 753.6661 425.0099 766.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+36 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md)
+>> /Border [ 0 0 0 ] /Rect [ 223.2369 564.6661 273.9799 577.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+37 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md)
+>> /Border [ 0 0 0 ] /Rect [ 285.5959 564.6661 319.8279 577.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+38 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md)
+>> /Border [ 0 0 0 ] /Rect [ 74.69291 462.6661 218.9689 475.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+39 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md)
+>> /Border [ 0 0 0 ] /Rect [ 288.6979 444.6661 392.0319 457.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+40 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md)
+>> /Border [ 0 0 0 ] /Rect [ 359.5866 293.0661 413.1006 303.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+41 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/conftest.py)
+>> /Border [ 0 0 0 ] /Rect [ 418.1046 293.0661 461.6286 303.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+42 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/jy_velas/inventario.py)
+>> /Border [ 0 0 0 ] /Rect [ 359.5866 249.0661 410.6076 259.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+43 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/tests/test_seguridad_inventario.py)
+>> /Border [ 0 0 0 ] /Rect [ 415.6116 249.0661 530.6676 259.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+44 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md)
+>> /Border [ 0 0 0 ] /Rect [ 359.5866 193.0661 387.5946 203.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+45 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)
+>> /Border [ 0 0 0 ] /Rect [ 392.5986 193.0661 451.6206 203.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+46 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md)
+>> /Border [ 0 0 0 ] /Rect [ 359.5866 149.0661 450.1176 159.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+47 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md)
+>> /Border [ 0 0 0 ] /Rect [ 455.1216 149.0661 486.1356 159.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+48 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/README.md)
+>> /Border [ 0 0 0 ] /Rect [ 359.5866 105.0661 413.0916 115.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+49 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)
+>> /Border [ 0 0 0 ] /Rect [ 418.0956 105.0661 477.1176 115.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+50 0 obj
+<<
+/Annots [ 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 39 0 R 40 0 R 41 0 R 42 0 R 
+  43 0 R 44 0 R 45 0 R 46 0 R 47 0 R 48 0 R 49 0 R ] /Contents 71 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+51 0 obj
+<<
+/Contents 72 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+52 0 obj
+<<
+/Contents 73 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+53 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/bitacora_ia.md)
+>> /Border [ 0 0 0 ] /Rect [ 185.9799 741.6661 258.1179 754.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+54 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/propuesta.md)
+>> /Border [ 0 0 0 ] /Rect [ 189.6319 717.6661 256.8859 730.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+55 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/requisitos.md)
+>> /Border [ 0 0 0 ] /Rect [ 263.0019 717.6661 328.4079 730.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+56 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/diseno.md)
+>> /Border [ 0 0 0 ] /Rect [ 149.8779 693.6661 200.6209 706.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+57 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/adr.md)
+>> /Border [ 0 0 0 ] /Rect [ 206.7369 693.6661 240.9689 706.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+58 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/plan_de_pruebas.md)
+>> /Border [ 0 0 0 ] /Rect [ 228.7699 669.6661 332.1039 682.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+59 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/mutaciones_semana7.txt)
+>> /Border [ 0 0 0 ] /Rect [ 338.2199 669.6661 460.4959 682.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+60 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/revision_seguridad.md)
+>> /Border [ 0 0 0 ] /Rect [ 250.1759 645.6661 360.8249 658.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+61 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/despliegue.md)
+>> /Border [ 0 0 0 ] /Rect [ 366.9409 645.6661 438.4739 658.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+62 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/operacion.md)
+>> /Border [ 0 0 0 ] /Rect [ 444.5899 645.6661 511.2279 658.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+63 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/DaizukeGc/jy-velas-jabones/blob/main/docs/pipeline_ultima_ejecucion.md)
+>> /Border [ 0 0 0 ] /Rect [ 220.1899 621.6661 364.4659 634.8661 ] /Subtype /Link /Type /Annot
+>>
+endobj
+64 0 obj
+<<
+/Annots [ 53 0 R 54 0 R 55 0 R 56 0 R 57 0 R 58 0 R 59 0 R 60 0 R 61 0 R 62 0 R 
+  63 0 R ] /Contents 74 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 67 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+65 0 obj
+<<
+/PageMode /UseNone /Pages 67 0 R /Type /Catalog
+>>
+endobj
+66 0 obj
+<<
+/Author (Jhonier Santiago Garcia Coqueco) /CreationDate (D:20261126204922-05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261126204922-05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (Informe final integrador \204 JY Velas y Jabones) /Trapped /False
+>>
+endobj
+67 0 obj
+<<
+/Count 7 /Kids [ 7 0 R 23 0 R 32 0 R 50 0 R 51 0 R 52 0 R 64 0 R ] /Type /Pages
+>>
+endobj
+68 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2411
+>>
+stream
+Gatm;gMYff&UjCTe>!\9-oQ"]d@7IG41j,JN`I)AJ6mPj4epSkCq<1fOhO#WMO^`3Q!d!<F<S9^HKq"=75=cjq/.+F^YI9!B14;DgC:,5b38O8qXO9s[h&)"P$b;b@Xa=>e,QZ6'5BFl(K%G0<f0ciWDY1VD<U"UmDaq$d`/]+-J&`N)g(0Dh'L1+If:/^e(2+.-i-uLI;A^EdHq%lrgDR^RuWh4*#Hd3dpMb`7S+V+q$1Bch'nLIS7Q"rAPjl:MV#,G5)h\%Jh:;X:+1rZf0iLgi[?=_ZGcXpl9(?Sf$jm'ABj%no%F7gEI(bsHTeqcHS`7p'HLAQUdZS"p[RS9rT]Y':???]dUcm&lOb^XI'i:6KC]K9Cum.mkN,ir;SlMQ/6;RjLA>=DN0Vkj&-BQ>Xg<S-`LfnD4ak_ognf;!km.6*[)Tj*P+q`s88`8,HT-26i/6rXU$Jm70=Pi/+4lYFc/l?Vcf=KfMn+4[\p3:f?9Gkcjo:2f?%-EcT<5ZU<rcQ)>UX`W'Q6(V:RVlp=KV'_Pbb?J'bmK5]I_C,o*FA+'9'uk?:AsGqm!EngO@U\ok'@YSA1@:ju-(>N[Ok(O2#A.7XLI;8i&4m9QB)dn@%S5mH*$]N9@_PUr.^A(d._6>PbsSO.'6JSZaC<oQgsS)8ArlAlhj"`(Q*j?B'YuB2*!N9/G+-C`>Oii%WB-D'phBe"6L_OA6$$,e-.L'j=Sgp//"N@IiAi#eoFtmeqd(.u)="Autr&#T%Ip(J.Ip$r<\2OaTUtI+o0?AA@-"G3`PR'F(XeI2XdjKV>&H[gkn?\OV3m^VKa'N'+Wj#b!-9>iQC>q#7W%=W/)th08Zi2=*hJfNme]:]_&"=_SSirhlgmQ,0iCEpm2AltfnZf!m/5qd@Z^*1E8'&cL;@\>#TZZ/JlYKoi?8P3*BDDd?-Xh+O#17qZRFVancBk)tod*]-;!^TMA,BMM=O]a[7dNmh;W6:?]c#Q&@[4Oj=gU_D'(.c[g:::8-]?lu49]kbVk=0McC*<6i\'En\Z"E]ndYW:_Rp'8sG,jGe>Iqs%4MU:kQb(7[[OdAIIRDhTAY&CMI;;ko&#q6A09ZE^_I^En!q*Yi7%eOp+##q@\5Rp5D#\3I^rbW4c>^4t]p<;hP<QfL$41a\1Oioe2iSF_;i.^klAJaFP^#-Td5uML=kV,1SkUMTd3nB7BSqI#ck*#8*,Xjb*)?<Vg]OqoY@49q5^]`X!]P7]Qk]`*Xe+=as:s_d?Y<X/J5-fY(:iM9RB&%2t_3LnnS1qi[UPKuS3nIYn3s"g1=EDZI*#DX*h`Eo%]%;),T=5J[%[Gr5ml@HfXm*lpK0/arPXRSuWs]D/FC5_X&pba3MZWB1oHq(*8tli(=`@2D%N2&Gmc(b;i\Z6l$(5X=#)#n?`JO&Er-Tt)Gr]t'*=!A/`cd`G>"A$(pLO)L'9si;YD:dOqiTKj[mN^G\+O>*Wes7g\K0"k@C&H<T=_>VRL:c&nj1(cEbUEpe#mYu+7*FLgCZ,srIWe`(#YGI$&2;,@K913g7X^#aP$8CFkWgmX;\"26*iJ*(Z-=%*B-%8ffD08S1h^YiqS9@!p*RW[^/.T*eHTN8]c>`U(.RNk$I72#$tpGAK.Pp.iA@bdGA:cf!DLhhY^-N4)pi]8Y.67WdGb>qiA[lZL_X`.$Ns`#TRAY6\>+]8C1+Y?OLiW'h(r@A&71F5A7VUl.&0^Vg5<ogZ]Sh]S!u"I=ilWSn(a=B>_pCUmI[>?W7g!@%*M\+OVk^d:oh'Dafs;l-k31RMo)1Od?pf0="Q]=^F]%f0DPk"-.Nt*HS0Bj8Bb*"2:'pF8SI(8N1!?Zl$87=sbB+*1tE;S/T8;7`eQqT@EK`cDC=*'<gogr`kbkU1IKia6-2f>!?8lBUPc>Ml.FSbhR(kAWpU-*A+=lK0Jia2&Cm\+mH_("5g5nkqDe?USa3l#MV?u2=\tGc3^iQGF:Rp">=VtLn<u\H+]T&j(L_d.c)``da#*4=D9)pa;[Lhe=+FKF>#_G/3^FaOuidL\r2+ATR\uP_b*]tar-XJVNP(MD!6;*n\C_m1E0V(nu]1Hb%U-pX)dp%mL^a/a06cY@*-@bD<qKn0=3.[C&VP&rqbA<XNomZT-Z225LTcFSnSRGDBQ[goc5_<Pb9j["/[A.HcLCuq$s5N_7EJ0*kVJ[Q886nUFc!&O0Jq]f<s"2+]Q!qNKYZJR&$FVh6^X9Uu[26GnA<qVd55)[#7/jIG%XZqKYBZ4m[I7<"pjJcKkDXe(.s6!OE7@_[?YXl[.sO/b=p7$>PO]k]tL)<^=Q-*un4958*A>C4-GUE`EgTJ1Pd46&?E.Bbc<19&e`j+eUibs.b_PFFEb$mQ*hS+GP*@bl.\`o#/s7/Mug(->EkH,hNtro\mQ(DHR>~>endstream
+endobj
+69 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3099
+>>
+stream
+Gau0FgMYe+&q/)-e76g`UPRF-1J_0:Z47L@i\^oW^d,]$fPP4HYsV*S3+'F#e@"%ogid;cZ"&Y*=faZ^/u0AppgNl/OotXJ$=:AV^c5S9Jbb<:=!-AFe['2?g7FZmekXj]`rXFLZ_J,6SLt2=E6ZuC4Q`l80t>A7F\ut_aX(b'+Ylk_-$MhSg;#T/&\S,Orfig!i==_&N@nc;$XA+6X']S/n^MI;\8E-(9`7QLE)PVh=$ED'h)ccu`JONFM8PG6?Er7)6i;hWna%&O0jMG><WL$sHea7h$$cM2E*SPr>s!]=N9,$[T:l\;=hA+HNo92@?nnY$.[#q.>l-6;=I#nj4%DH08f4BtW33ga-&"s5l+dN)V9\?o?$i8H5Ug,Kb>a)k.[.FV"qk3,?-j^R^ZV=^2.6H^]BVj%BANPmP%'.DR\n/A=]S"B/0GU6a%U<?`7rfj9H\#g<0mDTa^$Lc$c<aM"!paDfaYu:AhI:t_r9I@ZOk^sh'bIAN!gf.n\n^m\0IhiQ^##NXAUZWOn:D]6m\8WnZ>F&X<]t.pmRg%8V-@+Xq-!*S2aiqnD*&3&?NY+V"ABAGS)$W$,UkEZhE!'#A;jdM#YL=K"?:8f:$sK?t(1gUG62)d_otHVd;EOQuW/r'&uq)o6)8?S,m]5S)CuDkk+>=T#*t[]dsDsAjL(roe=AM,G@<'dD0ssBieM9b'Co[1gq)Fi5P67Eo,;\T*aimDH%f3XY*r)Y/?tFZ/Z!`>3Fek(m-=O<:bY%Lfg:C*M0RP)ruT%&gcI^-&YGBo(n^+Q+R+1GO.M1/*CFcF=OcJW3&Z[=j>\*pYu(p$=hlH`rJ2'JiW>//lIi+1Tu[.QR>%K]1]2Ml`&F[Fb+n=PTeqi2gU\0S/c+TG)]o6TC9mU$4r&s6n1[q9P'qrHlX6nc$_[Wp.!o=El%5IZ@[$mr$gn1fZW8ZVt2e`@+ELcl1em9+jT&b&]MO.E*OHmc$LUQ;S$1O:7e$Wa/>=Y-_jfcJ#ak5YqBgLX(V5)a9o%Xmq@Bq&lBe7\$\&%Y]PY7**N9$8]k*rl`8X(cWumRT]DAt]c4B$PcePKBIPZhq[>2p(<F9Q\ikcV]FVHO9DP\jV)jG?4Bs/gZnC6``uIA`-tFMp%'Grto_HGj#!o>MZKYM$'IGMK&7kGDU&SKDCbRDQ`1H6"opGI6FX@k*p-8_()$W;qKAHkAJG2+CHVT*Z8D>K4(D+O[/0;g4>po-oiL#0P?AtB\juCgl]\,WdURAd=oZ$@01ur.ZM](>?=`>_A%+ZO'OV`osAn@%!#ll!&5"Kcef!k!;BGjJh,piC%A?1h0#SeS.)6kq5k$&LYZ_:ae)n!<O,$uN2$!Xk$`ETMp6@)=;f;ggdos1rt.r\(6J[(&lo>Eq&/;L5sfO8Cg>*T^f,1@oYEnS39l8>ib-Zl%a$JDf$P2@c!kPd`h&o.Q\ZSUTG6eS6]<%=oDJCKLQ9e'@J:uHeiM&[2e7m!f4MXXh'`^_S'KM(5$_o2obmHj=]7.M490cI<t!'bQ,cMA-8O3R?,bW:`4.@RfoO/8F=bt4$.99LSi#Ab`,5q\F&6Q.L#Z(/aQ3_'^?=;e'/[B)aZgpLj#b;>*Cf`6\*;9N0(#*PMmj55rUgOP+oU:\HcdOmD;Z\craeS^rg52khT9_08aIrO\EBe80U5-#jZXO"K!pR!+#mUhLXbQXl"oN^WJ-aW*+3/mea-o?hJBI#)!BMt>1LuVoRdp9Y9NNX51'a_F]*t-ajce53Ep[m[k_M?7d7o+lEmjKsN4>n7(@q*S0^"MVkRTTIYd8T]BFS9p>U2Zju>ZCk,&iU:5mfZ8S`FNnUd[s2b2oo?/JC.^]Q5qHA7M#J>l.[9'=9`9$H<G0q@umgWZ8/H4@2C\+j7$NB\NY3X2tk.sDbl.+7>=JXSMXc8@+<K1gLI*E(,tDJHRn"e\)##?:Vnc(T\]C\b`3G`dWA[i:1F,h;XXdTH&2uc,E7RS)t[VX*IFKVjV_$"!2'onq0iuI)`?GKJm2,(*Jt5UDHBlWcr1S4Vs*>dMQZ-c]OQ]9*-9^lno5l25EiYG0MOA"9*:cbr3b;0bR>>$Wq+-HS9kT&?HY)i>hF;"P8iN:!>JTaF_qhYKP)G$=Vj.mWJ3-Q?&8bf#`hqCFX(DTW;Q"=D(3-5+Fc+;SBe[^Th,*61@:CU-NqTR?nnW8S(f0Y9"Cu3AI8O-ct@/05/lC&SoLOJl;UbNi'Jn:P1sgNcu7HOlodCQ?DQ"JPVj_bep6s5r!%MUIr=@rQt>*j-a;rg$5'$YeX6@>cYdU*s.qZuj-bW?OD)1Mc1bII/=*0.gD0P;)j+^ka,\SJHW38NqVsB!XiO-$ghX!6eZHhFArFU^cMnBE'1FK.&6+%6[#%r9_$^-;,=Q4D8LJoQ%Oq3Jm7X`E%'L=kIuiJoT/dMCc:=GQ:H**,mJ-0pIs6tbBBI_1N9uWegk3Z8B]*RFbX?RI0^>BEhh>;VG@@iDU5O_&(H$OVXq)kTB&CQ<p-[*-.u_M3fP7b)W-'Vt>i-CZB+]&q9Ds9KkiVtbfL>aeA*Cr=h11R_qaT3;H1!;Ba*rL?1d/W=nVZO`b:5&BrbRW->;,meX/NJV,.-7+*u]/fmN!S?=ZZ8O6YsrVKr^5??LfDU]JC8gV/%](US_W;V$?W+hIJla-a^TbM7lWa$g<L-5_=C(IOak/(5KlpOZ4R73:o]Zj*RN:*F6"M3Is6(i+;;6h'FPcGDZ/sPk&Bm3]4T$(nHe[+LN<98^2mcMVVP@]:KsO+Z?n;^;#Hso#[JcUK&j+mdH!_1On\TBJS2+Oh!sE@,2Nb.'Re-a4%[U7[o7W[XINO0TmYS8Uu/15[nM1..tS^jQ(1*MrDAq.8J:*)uRJCml>:D+\>GW5@%'$">TJ]noOUOaf(QoJ<6F8SQ2DbN'NG%/RhO"G8deQLY1.JOH6Dt7WTc9qeE(?kT\u?lA^e:EgL;M3j$Su9q1O(5:O2Ih2%.CF+S_U`^SZI]D[$J3WVa[mk8JNI.2!PUiT%HD>,o(2qm>V8,uk>21Kp+'O6W-ZoA#e;U;#_<I]U#@'rYiYU@PJb!oFuRQkH;;GpmNruR[#=HDt<IsM!Q_>~>endstream
+endobj
+70 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2307
+>>
+stream
+Gb!#\D/\/e&H88.E?F![@ms7umIjsmRpeb;X_fb"J:W66Bnr,58kNF&?b\ZpN\*=Gl<49_Jg?Z',C0%=4jT7CLYpncc:`[00B)^1#O]Lk&pV1n\9n[f0@)hQ%;ul*Og8YFNW],"Z_A%Z0Gd209)Y!,i/B%R_ds.\?`I[S8d.jnaT?S7Wg/^)g;)M<@sISmr1OI3@0:FY<`dF-K?G4Dr.^Nj2snT.o:gJ?qKKJ:UEK9-]Z30Rk=#<RSN'/B&k*edg)k#j_?W:N9CD;@41n?Zo\?oY_/.EWfU8X9HP(_G^kDRdQGA9JcRP@sZ3W%I^q%dSGkbCV7ssVm+cCVj2ahls$iU#YHQ1u!*O.S[K0[66hnToZddmhgkh+(lc+WT.,33^FF7mCed[e8bR_b`D]2DY2)cB4gAYrOM&I3%o([1:@b4PgCL@D0@phAQ`@]c<M[["(_3PCS/kp;@I";nP`<tm\le^ib%D=AU]d-cVpoi5K_PtB0AKq#O*5OK`!/$L&d6dF(7Vue',V/F,/I_`H)Oil,5^`XR>iI3?IF:Sc6WV\F>@).H19o,/<0`+Gq)Z1E@].t-4VQ*lo4@-$;g7nTiQW:*6[nlH99#HGR(f,qI(cH9k_bdn*p)]1R'\S1HeIro=L#Qknd=#F&emi#;!Zk'fHXl?<_b_JQJ,/'u9WLpWKeu%`"bG/?r/7fUq#7C5("<_5NN<oDSn%CRMaI^gU+^RDb)B46lrF)[BSAno3D+gi>AFMZZ;[:8q5KnK1HuR^)Gfq#_IUt<i$j^-.9DnQoQHoH<@o3IX\7?Q.F\ft's+QCq/Ao0@<H6</i>J3Tp<HAhMhDDE2orh1uX3k+27D1cJ\*2HXJQnV-I$3mHESn-<Qg;]W)kc\l*,I?Ge0SQ&>g3DP$XFj"C=fP,i^(=K#9^Xi-rR:Ca*pV!4Z5SDk)P%Q+MoUM2X->W&Y-24:P#(mm@*ZdA^s0COGHCg%6$P7<Pc4^*(T+n%28a.mT2bi)j<C.=<A(@DLSp>_>lCeP!g^>i$3$/P3i&^Q=Kong-s'8V<]5CJ,rkl<FKVIdsL6u,bNmHB]Ha.h=)[o0)!QZI91NI,7&_Nh2rB8*K#%[)unN`E9WC:-(_lZ(o\B^?:Y/7sU:Bgfu9O2/jLL$UP.bV[272Y'J`@ig(*RSoST^Ve]7-=5h@''A3FR5da$04A>[!e/=rlRbYYZjb9&0iF)D/KG)r%g&>o@0(jsb9Rc$gRe;1SG?$F9Os)0fG@=tE_STdYYuWAX0u-J>Bko*%]>m?NZG-dOkM9HT=qt8)Mk9Rc]4oHLfW7YVbS&gEl`h8p[)_g$nJCGE*%\OXc%=/rGn\J_!\"\-jM<:/&8T9rYJ_'6^0"<QB^]Q\mAC(:A>MDiLZ&C<o#Y;g!2>@87j!@dDnkG]`L2RlZYjZ`;Ei?J*tb]E9QZc_\j+A,\$dQPfOIj8U0aDU>oDeN)[>q?oV_!D&(&kXceBU9aV!PVbXG]*!a3R+a5'5d^fCVN:'p'3'BQ,8'OaOVg)$_Vt+62r&Au-jdRYJN*:#_S;j\^")op@ke%a__?"tT=>lgi<8R9VA<jT5kER'mK1kV-lrPGopbeL)Hb$<oE!8UG+48M7(54RNFb4sEdj'QBVURXk3GH6g_D$di%69J4-A&Lii!F$FDID)'@sGr%Ynpia6n!4g;SdsLO2_</aS<It$"B4kVaLh)W@sjaV*,sn:+*R/#6\U887o$P-]tm_&/'83&,bT)-S4+i(]?$Ri7Qa)l4R*U0nF/&.n_f&O(s>><rn@"fO=6kW_ukQB'jG^@,lWr/+uh=?64hm[f!f2s7:Ac++DU[6gt.0A3kc[C9(PiF\\H2[H`_=mr>:p@_j9"AVHSW,On"/I&I@-KA<!TahA!>M#a:ILK&NrX!f)7WrpKsAUD\/?#&_?O)tml)Pb0]Q/:0Q;I<70cg1"ap'?S8@psNXGqJEkY#_<N9NW/.8K81U2cP1*cieRS\Ul@kS#1Tdc)RpoL/Mh1&pMGf(#j*oKNctA3d9,KdZ65RGX1UpWHGkrj@t&&C(`SJ=-?=!3SlZ/\a>Nfd%/#^>b(-n.UYA1dq%0tlXLRI[F1;E7[L&(q[8DF@2@1%-pFfqjq'%XI=1's:>YGU-]N;3(t[\cN#a/'W4Fk(5%o5:Q)0!L[I*G[Mg26F'AT2Q[oL6Ngs0%6i"BD[/u;B-cT.u,;"rIOpL-l_#@6`Bo1S1jBojAtInpf-ka"kCF72(G9F_q[BL`fYN66g;5OOP6=)5tE6=WuT\t+'9h=8WV?*/is0SSnTeSB@2[nFo^fYQ7Ue]+3M~>endstream
+endobj
+71 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 3080
+>>
+stream
+Gau0EgN)%.&q0LUi),op%)G#hVsM@TSQ'2NEP,L5<N:(*,c&4E&dh/jUO<$1"tu]e8QNJF40_3UBJe'@Vbb4#\bP=\B3$e]YA<js4_NP[f1X*c-XbOJg#_n[\$NdpTn_'RqY04#rA,th_0^63j@#u6EoqFu-_.O/P0JHVQJ.Rd/QF)(VQ*+gN6&D8F3fctLHjJlA0G]r@3<ES=0d:kY&E"d0/Ur'Zl;*0)oXn95D^,6Z=#HK1OL7`6sf=W*$e8l73$+1Q8J7'Qkto3]6Mp[hP2C.p=l\$CsM(nR\s/t&\_`:q"BV+$+p'.=[cge-\A0-+#.Dip<Np>6Hsu;GYpHon`%>UP2/;c:S#kgp@7+Rcf7ThM:[,ogNU<[jZ]F0Sah@QJ+_Z.ZoQ=O&jEdG5NM13b2d?M'Y@Q'BuY0rB>QL68"j_,'Le!gCL*u1h<Fd+A_J!36ALZQ8iDi\'h'9pX>ImIQabdI_;q00AX+]lWeQ&6jOp,A,I\'ce4Ne$[9U+/jW\okg^`,NNZ%2Q"""ph2r!:MWk+Bo,E1'rH?7CFXeRFIF4=M7Eh4i1HUF>EGjPa')bg=pE0mJIE'-AXG_B3D2brc_(7.H1oFS9XK&O6S_--!+bIYLrktau*$Z(4HaAP.g8E9pf7trnVS!K+s[ijmrF5]/t(m$-&g$EaLP1:38Ck)LO4/c;?"';FTObOu%Qn$_A1h'>'F&qP!%u(t[6(?IW'=hKf%uB#?40h=6FqKml8H]aTeB8UERer4S_,eNqS^i]seI#-WQD?7nNa/k^Y&pNtCQtnG9j,W=(:T[([dML#C:9E4;4$WR.j%HC,Nbl>3,d7a@JS"r`=MZJ/sp5sH#fei/>-iZJKr)EN`+CR/J\.,)NCl!d#N`he3Y$6$O$uDWD&i"mA7lXZ4Z08cMY#M'udX_8OETsY`cjm4/:36>/C):dZXW6@qK.c.*-el+uV]4^JQ?Y1^qi#$lJcc^jqR5KL)i=36iNtM0CAn"#ZsY^[2]S%emkn'\E0B3D&MInKSbBemKF9R8F53EnhA3T/OqqJsAbuXc#B]H&GICRHmaN!7cJJ>Of>T2nRo$gejYhooN]2;pA[>',p;4/56!rl4-iIf<X[TZDRHYXj#K_N9;5>JZ,$s>foq`Yj#a-ZlXlb#i;4f@h3&Sgg+:s.!F6)-'3";Rpb-f]->/5(bf%!XRo:%Z,k2-0djal8=p'Oqg`2P/.H';*'*JEDDZU(15N#76[Va^B^1@4qTjXE>Y\6&C,Ed=f<(#tMPLH;_Gmuj#bVm9U-p/=e#CULM%6H&LM:QLKjJ._MhTT"J1@tE52m#2[mnfK)aZj8I`Ikcm%CB&88oU=!2c7_!O&RPKnQ!UXK]]:H;>W??!nB;:&qu(ZK&\3]i8f"M"oo7TWO;6qpPm/4?+XCr]eRX:cnY!YFmR4O?rnU+I3;]E2&o9'K4B0La=<u!^_pbj-+3=@NQ@Fo(oq5[/3osA>pZ()fUSQfh4s#0,Z%j9,8lG(Clr3^/m,u.<Tt#mu&L[,X1tYpkWlmX0jKX-#Zt&m\Vq@X+s47Fm#[$CRLg$X*2%\a\"gD=nr8#(S].tMs0h>>>tU=6M6,Mfu;7?H3(*FOp"m(6Ed;4Gf.Io7E0b/@Fg.2DK:$ODr-[k_iOgPg41LU!mc?!(#X$l6#mJi+?6HElBO%u0sjd5SZDSQNsdnC,]Q(]S26ps2CL`=/L;8]mj4/S$Lp!Zr5shP>\[6gg@3`k:ZC]E01]tqW=78\Z4)m$.ACRo+c%(O&#8L=LQUEVMbL9D`F2[](-*\9c!V5dOD-=PE93NZ"NQ+WD)M&t0.S=4-"<oRip=_3-EAAH?--Y$s6<ZNAP3,*"htG$gZ"kb@o42#esYGnD^p_;66Ic:<9PXp!^6Shb?nYA^5"oOZk)4rf>gI8'^5a_[Kc7`M,5YqK6WPQ#)1Gg_u(s<GO1?"G3n5UShAJAj8Qm$G6l)]#$>lpmG;N"-Z]1t\TDTf'F^)&[F,:)`8)7RMN]EUIj[%:T`Z)ug&n^.""AM?52RYdlGl\hmrBh?&":Ns\\YNPNfSB"3t&=1Om%S]N+JK>E\kopj'fghfQo1Ejt@e59:gIMHiS'Xq!a&N?cAnoYS1)sUgL=m2$$PunkV&Z!(nn9SBr$NhfZ6U.N3l:E6o>[-o$pi6riI$(n"N2MlGE6WXMC$@;\ukONP,!?t)jhKkAe,?(V[.hFI7#,&o&)a!<N/h[)RSh.*?P_?@'*Ym6%a2t//"*^Z[W]Q#S8hNsnTW>0UM@Epu"RW>YN9=cSj$C:X`j71NIqtoCO7FnLQc6XRXaf`U)cf2ELRbU2.P`@Mh)cUW%jT]5r:fP8jBFqUG*i)BXP+^qAYA,tL#pk2iX2q5^(qVBl(0VMa;GXopDD*k&#\VRSSQlAP;$>TgKmT*E[HYm4M1KtHVA+uD%#gN%D+.JILZKAF'4Ap&(E.B#QI*]L_]p^BF@l6`_".8sg])DCG6"PYnb`]`?5lblLtcq/*V&t?lML7MbGc'Xr?W1U>Bd]3LH"o2QE'Qd1$(`)_TVS[\tAYdXagNKm+lG/=ei*Nlu'o8D+6Sf<Mu%OQ_;PpG#7;t%arJO,6c]p_)$UVmsW&m1h!irD:OUY_pJAWGll5raa/s+I]/2H#>gN[4FmF\ljaGX*(C7\fI:lY"$O=2U^Eamp3&h,eB/\@f/\tf[afk7=e4$G_A4%1Sr2rbC`HRb'FR@MXBei1"]VDn(Pg>Z#b]XL.<V3.hdrW@`2a1pTooq=oN@@=j*t;nNi/Sn5/ou\M.jXrqh/o;8SNi%@mbhbCh;=(gT+^dRFj"YK_0Ri/083"m1hE;A1t:Rmg[W:![L)d-il_dM!hpRXD..R_?A>2pR,08CduoebK$[,\*nd\Hp`@HqnKgU6]Z4->rbJ3E0,GFk7a(_nh\/,%3Gj32r.r&a7nNe<314XIWiI%JH*)k:<_`H^hET/7f?5UJ:/N_b]6pPd:9XhEamJTm_!]j*@G,&(nrd.g>m1AW#2'^dGrld4,Qg'm1,SD5tO(N^f17<<7gShmTMp45AXWtd\Obc[>thcqr`T].uUn0r9#kZp,=4'm.U~>endstream
+endobj
+72 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 686
+>>
+stream
+Gaqcsa_oie&;KY&ME/8%_2;E0qq.VqO<B;_'ab*5Kq_$l?&;NOWC?[USRJ$4JdkB8nh2(6+et)l^LdWD;T#DN&nDJp#I5$ie.6Mu2p[uJb^h.%6J]Xq_<X&P]L(K9.OES!5>!?"O9[5.*asEY3ZghEc8n+=FYi_W[m%SfchDDY"@$nQ&ROC%2r8!@!;.)lO)4Do3noQD;u;jPGMSH2<:@7X;WbGO._ir"HR0.o8a8ps=diYEceu<Ga[AEA$4#uKZ<W\1%K(eEBn4bE3,0;V74BJ6EUmPhe-NVh5oZ>+*Pd=!^m1e$?pi6]*E$GiU"X^_"e:1!);UfB4>5@P&Flkk`bqNN$ME\"]S#M=?]CAhUn_h7,A?r56Qjk2,,Nu/KY`:"(D"NH;t*LbLBCpp2a@V_nLq7?$!2kl-jj**Pq3%2K,3soVB2)#YuKX^YU(+6M`/l)ihDo]/uhNBW.;mrll>5+jqe8Bp?!/3HX&UI/2F;nQ#RtQUWdY84#@ao[(Z'fR"2BAaTg+fVA*\K!AU$N)p<`19Vak:M2#UNeoSOVYf<7B<A5i6U06])<o-`=<LKgAH&i?:k:=VR1l7/Tc4$&%GBt)=9=&<P+N]YO>MFL\#_?qB%K[\."cSXhF@^SZX`!sm=2nI?/_>]4piL`"ZusDJV^5oFkRoDN]%W2af_bgh%NF[~>endstream
+endobj
+73 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 1106
+>>
+stream
+Gatm99lJcU&A@sBbY]sT20UL4@X:Z$(ep*E;\0*>pbF$`apS'h/u^2nopOL0@af:#""bc1k'kODpL`8a6c'ocSok;-Es:/S)RP(\!.(]S:q_WCe^^RuAS3A0V95-I4qPKs-n"X"0$@7$RSlMQQ/63a<<o#&rF'Xc_85itK'apH3c#!*GK(?dmSEV1>4h:fhViqIao;@k$*#'Nk$dJL:e?fdX3e>#jIhT!\FP2l^>-iTP"q-XeLo0*F6.88'4(0e121HE%P#_e@eZ6_!kD]Dh\[+sfUG:MD[HZO7n7u;^Z&smm>%UUo54I,I"bB4!qA$C3]3>NT_]&g:/F83[%Jc)j,U@#W-;sA!<W)NftDM^pJ;D!jDZ";=^)CG_+5#ReTY`!2YK,Ci!TuSHU\78Rq[rR'Y;E;<]"I^-eu1>rPBrhkpWki[)qFu9gc>]<hf:#P"o!&'?BJ7\]!Ho#[MuTQBT2iOPei](^:$(`lbE<7cm'dD&JX"4MoW?ZH\8W45049\>A,MTg*K#RHEfUHHV9Ne3f/`p,.Ns&k9&)CDs*icJ'B[SZQNq5%Y`H0jp=A!-s!V`qJ9eb5=;:Qdn_42OlW<=f#b1VKZ_qAJq'+LhWL'/aC-LRD@,h13(=8\M1J.k.X)nCjEk)W1_"F*uO[$pD&to>hT:gITRbo`$CM4i""U=p,p,M'?=q1O5q5Accd_/h)KB99;%?u[eTMTYS=0:]KffGE1/r!:,?i<()cuM3pVHT>![(U6RTu!9TGoZ?M_Y;M*4#7qKF/pAbi\F%%&SlNAXMK#VtCkqqf*:71fMZqIT>."MG-Saqfu4<Naem)q'5BGU@H=Y+asR*&[T/6Rs+HS`m>@Ui!]JV2fk9oYgg(eO<eZ+\9qm\CTuih'e6pQ$%30k808ii@EgAWLfegOo:hk`IAZ+GY0pg_Watchrhn.oD\/EY'`0]ks8"_Z""t$>IQrD8%KL<GkPj408)5*%0$I%_`1BjO'[+37>ruaP0;jWVsUTc54Zb5(STEPa4<_(HiC:4fKK5J@D^ec(FGcHO6"0*q[(US>CXS>%(^>@L*ioJR:S*Ld.-q\M8^PV:X[m/I[Mg.,!XWsY.ar0TJc-~>endstream
+endobj
+74 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 864
+>>
+stream
+Gau1,>u03/'Sc)R/']G7khrYscL*rV$+('uW_&C(<JHkj-uhjC-MHnPOp33QW6f3PWj\nQ3NrCop*g592t,VlF+EjBS6g6o!p1$/'e5T#K.liLe#XXrm6HWAs.'3LYB&/_n@i/';9'mC+?=Jc3QuP(\dAs:R<s0LK?GAH[9o1O.8!\J@Gptur:HDXi"'))]-@%8)!6l5s4#2M9/D3ZBsUh9`iZ0fQr2"MRe'14(B&?6<bSo'ZrS)7c?N"n-tFm=#*bPoqsR]*kZ6a9;@nq5on'T05I(Q-_*8adQK[)/;NG?Y[0;plD*lN/jJ&d$]";4`d=Rk4U0?,Adq*3]h$%KNa4FIe*/VNNLes!8Eo:qjMS<r!1UnGUnm7L6<i?\oXmdHYT%4:KpjH"#83A_/d=,>kI>2V`Dp4s#\k?hjVCYZ$H.#+k-"1d]k^9>NDc\NNnH6kB3%-PAZ&D2o'_5@dO9MqXTk$NLck.0[)=(""X;bNsN]).HT:3,Zl_<)BFo@Kp)X5Ah`'N=(jp0g[CC^^.)EPCU^g7q<L#$4aPsV@t&7[6uUSkE481VH:RMWpAm,H''kQqEJ@UJ+I.Arlrl:Cr'T50G1R*ct8;%]A$I;U6f`"4/'K9jX$q`JqnD&DTEnTS8#cPpU.C"q%mg$P$79`23Bgt.*CAm+rb"_Y&gXsZ3'fHD9/h63n"*/Q7f.CL4Y9VG:+E.f2dG2"lg3SJ^s9du!_SD9ZQrMh<q`$Hel?+%sUHM6E*Z1]J@V8FOqDYHd'RlX:V#_$,q?NUPlI5Cb'(1Go/j9PX-Nl^^P;3GoUB(GIq81Ci*boQRLJ)BnLOD,T6e$[NMi86P+IFPReat3EF+(5D\^UNQ3l2~>endstream
+endobj
+xref
+0 75
+0000000000 65535 f 
+0000000061 00000 n 
+0000000113 00000 n 
+0000000220 00000 n 
+0000000332 00000 n 
+0000000557 00000 n 
+0000000783 00000 n 
+0000001002 00000 n 
+0000001237 00000 n 
+0000001463 00000 n 
+0000001688 00000 n 
+0000001915 00000 n 
+0000002138 00000 n 
+0000002361 00000 n 
+0000002467 00000 n 
+0000002690 00000 n 
+0000002910 00000 n 
+0000003141 00000 n 
+0000003354 00000 n 
+0000003567 00000 n 
+0000003795 00000 n 
+0000004009 00000 n 
+0000004239 00000 n 
+0000004481 00000 n 
+0000004798 00000 n 
+0000005026 00000 n 
+0000005239 00000 n 
+0000005462 00000 n 
+0000005675 00000 n 
+0000005903 00000 n 
+0000006139 00000 n 
+0000006352 00000 n 
+0000006565 00000 n 
+0000006839 00000 n 
+0000007069 00000 n 
+0000007312 00000 n 
+0000007525 00000 n 
+0000007748 00000 n 
+0000007968 00000 n 
+0000008210 00000 n 
+0000008442 00000 n 
+0000008669 00000 n 
+0000008895 00000 n 
+0000009126 00000 n 
+0000009369 00000 n 
+0000009589 00000 n 
+0000009812 00000 n 
+0000010042 00000 n 
+0000010284 00000 n 
+0000010502 00000 n 
+0000010725 00000 n 
+0000011065 00000 n 
+0000011271 00000 n 
+0000011477 00000 n 
+0000011700 00000 n 
+0000011926 00000 n 
+0000012153 00000 n 
+0000012376 00000 n 
+0000012596 00000 n 
+0000012828 00000 n 
+0000013064 00000 n 
+0000013294 00000 n 
+0000013521 00000 n 
+0000013747 00000 n 
+0000013989 00000 n 
+0000014287 00000 n 
+0000014357 00000 n 
+0000014691 00000 n 
+0000014793 00000 n 
+0000017296 00000 n 
+0000020487 00000 n 
+0000022886 00000 n 
+0000026058 00000 n 
+0000026835 00000 n 
+0000028033 00000 n 
+trailer
+<<
+/ID 
+[<1790bfa3b92c333ddc8e55e62ec7e0f9><1790bfa3b92c333ddc8e55e62ec7e0f9>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 66 0 R
+/Root 65 0 R
+/Size 75
+>>
+startxref
+28988
+%%EOF

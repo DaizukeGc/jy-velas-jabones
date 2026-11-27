@@ -1,0 +1,15 @@
+# Resultados de las mutaciones (semana 7)
+
+Archivo mutado: `jy_velas/inventario.py`
+SHA-256 original y restaurado: `55c789b762ca76585c290dca7ef46ddd062d560c45a537c0d69f409bbbb4506d`
+
+| # | Cambio introducido | Archivo y línea | ¿Falló alguna prueba? | Pruebas que fallaron | Resumen de pytest |
+|---|---|---|---|---|---|
+| M1 | M1. Cambiar `<=` por `<` en la validación de cantidad | `jy_velas/inventario.py` | Sí | `tests/test_consumir_material.py::test_consumir_cantidad_no_positiva_lanza_error[0]`<br>`tests/test_consumir_material.py::test_tabla_decision_consumir_material[MAT-CERA-0-cantidad]`<br>`tests/test_registrar_compra.py::test_cantidad_no_positiva_lanza_error_y_no_cambia_nada[0]`<br>`tests/test_registrar_compra.py::test_tabla_decision_registrar_compra[MAT-CERA-0-La cantidad debe ser mayor que cero]` | ======================== 4 failed, 54 passed in 0.13s ========================= |
+| M2 | M2. Cambiar `>` por `>=` en la validación de stock | `jy_velas/inventario.py` | Sí | `tests/test_consumir_material.py::test_consumir_descuenta_existencia[MAT-FRASCO-10-10-0]` | ======================== 1 failed, 57 passed in 0.13s ========================= |
+| M3 | M3. Cambiar el descuento por una suma en consumir_material | `jy_velas/inventario.py` | Sí | `tests/test_consumir_material.py::test_consumir_descuenta_existencia[MAT-CERA-500-800-300]`<br>`tests/test_consumir_material.py::test_consumir_descuenta_existencia[MAT-FRASCO-10-10-0]`<br>`tests/test_consumir_material.py::test_consumir_descuenta_existencia[MAT-CERA-1-800-799]`<br>`tests/test_consumir_material.py::test_tabla_decision_consumir_material[MAT-CERA-1-ok]` | ======================== 4 failed, 54 passed in 0.13s ========================= |
+| M4 | M4. Cambiar `<=` por `<` en la alerta de mínimo | `jy_velas/inventario.py` | Sí | `tests/test_consultas_inventario.py::test_materiales_bajo_minimo_devuelve_todos_los_que_cumplen`<br>`tests/test_consultas_inventario.py::test_materiales_bajo_minimo_respeta_el_limite[5-5-True]`<br>`tests/test_consultas_inventario.py::test_materiales_bajo_minimo_respeta_el_limite[0-0-True]` | ======================== 3 failed, 55 passed in 0.17s ========================= |
+| M5 | M5. Ignorar la fecha personalizada | `jy_velas/inventario.py` | Sí | `tests/test_registrar_compra.py::test_fecha_personalizada_se_conserva` | ======================== 1 failed, 57 passed in 0.15s ========================= |
+| M6 | M6. Aceptar NaN e infinito (quitar math.isfinite) | `jy_velas/inventario.py` | Sí | `tests/test_consumir_material.py::test_consumir_cantidad_no_positiva_lanza_error[nan]`<br>`tests/test_consumir_material.py::test_consumir_cantidad_no_positiva_lanza_error[inf]`<br>`tests/test_registrar_compra.py::test_cantidad_no_positiva_lanza_error_y_no_cambia_nada[nan]`<br>`tests/test_registrar_compra.py::test_cantidad_no_positiva_lanza_error_y_no_cambia_nada[inf]` | ======================== 4 failed, 54 passed in 0.27s ========================= |
+
+Todas las mutaciones se revirtieron restaurando el archivo desde una copia en memoria; el SHA-256 final coincide con el original.

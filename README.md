@@ -4,13 +4,17 @@
 Fundación Escuela Tecnológica de Neiva «Jesús Oviedo Pérez»
 Autor: Jhonier Santiago García Coqueco
 Docente: Ing. Jorge Luis Trujillo Artunduaga
-Fecha: 7 de noviembre de 2026 (actualizado el 22 de noviembre de 2026)
+Fecha: 7 de noviembre de 2026 (actualizado el 25 de noviembre de 2026)
+
+## Qué es
 
 Este repositorio contiene la primera funcionalidad del proyecto final (semana 5): el registro
 de compras de materiales del sistema de JY Velas y Jabones. La funcionalidad se construyó con
 pruebas primero (TDD), un asistente de código en el IDE y una bitácora de las decisiones tomadas.
-En la semana 7 se agregaron el consumo de materiales y las alertas de mínimo, con una suite de
-58 pruebas parametrizadas y un registro formal de casos.
+En la semana 6 se hizo una auditoría de calidad y seguridad del código
+([`revision_seguridad.md`](revision_seguridad.md)) y en la semana 7 se agregaron el consumo de
+materiales y las alertas de mínimo, con una suite de 116 pruebas parametrizadas y un registro
+formal de casos.
 
 ## Funcionalidad de la semana 5
 
@@ -133,18 +137,49 @@ Las reglas R3 y R4 se simplifican: la validación del material ocurre antes que 
 cantidad y la del stock. La tabla completa con las ocho combinaciones está en
 [`registro_pruebas.md`](registro_pruebas.md).
 
-## Cómo ejecutar las pruebas
+## Requisitos
+
+- Python 3.11 o superior.
+- `pip` para instalar la dependencia de desarrollo.
+- No hay dependencias de ejecución: el núcleo usa solo la biblioteca estándar
+  (ADR-001).
+- Git (opcional, para clonar el repositorio).
+
+## Instalación
 
 ```bash
+git clone https://github.com/DaizukeGc/jy-velas-jabones.git
+cd jy-velas-jabones
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# Linux/macOS: source .venv/bin/activate
 python -m pip install -r requirements-dev.txt
+```
+
+## Ejecución
+
+La librería se usa desde Python; no tiene interfaz gráfica ni servidor web en
+esta iteración. Ejemplo mínimo:
+
+```python
+from jy_velas.inventario import Inventario, Material
+
+inventario = Inventario([Material("MAT-CERA", "Cera de soja", "g", 800, 500)])
+inventario.registrar_compra("MAT-CERA", 2000)
+print(inventario.existencia("MAT-CERA"))  # 2800
+```
+
+## Pruebas
+
+```bash
 python -m pytest -v
 ```
 
-Resultado esperado: **58 pruebas superadas**.
+Resultado esperado: **116 pruebas superadas**.
 
 ## Pruebas incluidas
 
-La carpeta `tests/` contiene **58 pruebas parametrizadas**:
+La carpeta `tests/` contiene **116 pruebas parametrizadas**:
 
 - `tests/conftest.py`: fixture `catalogo_sintetico` con datos ficticios de JY Velas y
   Jabones (tildes, eñe, apóstrofo, comillas angulares, nombre vacío y valores en cero).
@@ -154,6 +189,8 @@ La carpeta `tests/` contiene **58 pruebas parametrizadas**:
   cantidades no positivas y tabla de decisión).
 - `tests/test_consultas_inventario.py`: 17 casos de `existencia`, `historial` y
   `materiales_bajo_minimo`.
+- `tests/test_seguridad_inventario.py`: 58 casos de abuso (tipos inválidos, valores no
+  finitos o negativos, longitudes excesivas, fechas inválidas y códigos duplicados).
 
 El detalle de cada caso, la revisión de las pruebas generadas por IA y las mutaciones
 está en [`registro_pruebas.md`](registro_pruebas.md).
@@ -169,12 +206,15 @@ está en [`registro_pruebas.md`](registro_pruebas.md).
 │   ├── conftest.py            # datos sintéticos compartidos
 │   ├── test_registrar_compra.py
 │   ├── test_consumir_material.py
-│   └── test_consultas_inventario.py
+│   ├── test_consultas_inventario.py
+│   └── test_seguridad_inventario.py
 ├── registro_pruebas.md        # diseño de casos, revisión de IA y mutaciones
+├── revision_seguridad.md      # auditoría de calidad y seguridad (semana 6)
 ├── bitacora_ia.md             # bitácora de uso del asistente
 ├── README.md
 ├── pyproject.toml
 ├── requirements-dev.txt
+├── .env.example               # plantilla de variables de entorno
 └── .gitignore
 ```
 
@@ -208,9 +248,14 @@ la revisión de las pruebas generadas por IA y las mutaciones aplicadas al códi
 
 La bitácora completa está en [`bitacora_ia.md`](bitacora_ia.md). Registra las sugerencias del
 asistente aceptadas, ajustadas y rechazadas, con su verificación y el commit relacionado. Las
-entradas 7 a 10 documentan el diseño de casos, la generación de pruebas, los datos sintéticos y
-las mutaciones de la semana 7.
+entradas 11 a 14 documentan la auditoría de seguridad de la semana 6; las entradas 7 a 10, el
+diseño de casos, la generación de pruebas, los datos sintéticos y las mutaciones de la semana 7.
 
 ## Autor
 
 Jhonier Santiago García Coqueco — Fundación Escuela Tecnológica de Neiva «Jesús Oviedo Pérez».
+
+## Licencia
+
+Proyecto académico del Seminario de Inteligencia Artificial Aplicada al Ciclo de Vida del
+Software. El código se publica con fines educativos y no se ofrece garantía de ningún tipo.

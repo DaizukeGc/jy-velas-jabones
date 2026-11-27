@@ -2,7 +2,7 @@
 
 Proyecto: Sistema de control de inventario, pedidos y ventas para JY Velas y Jabones
 Estudiante: Jhonier Santiago García Coqueco
-Funcionalidad: HU-01 — Registrar compras de materiales
+Funcionalidad: HU-01, HU-02 y HU-03 — registro de compras, consumo de materiales y alertas de mínimo
 Asistente usado: OpenCode (asistente de código en el IDE, modo agente)
 Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 
@@ -96,7 +96,43 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 - **Decisión:** Aceptada
 - **Por qué:** Las seis mutaciones son cambios pequeños y realistas, y permiten comprobar que las pruebas no solo pasan, sino que fallan cuando el código se rompe. La IA acertó en las pruebas que debían fallar; ejecuté cada mutación por separado y restauré el archivo desde una copia en memoria.
 - **Verificación:** M1 falló en 4 pruebas, M2 en 1, M3 en 4, M4 en 3, M5 en 1 y M6 en 4. El SHA-256 del archivo restaurado coincide con el original. La evidencia está en `docs/mutaciones_semana7.txt` y en la sección 3 de `registro_pruebas.md`.
-- **Commit relacionado:** `336eb98` — docs: reescribir registro_pruebas.md con tablas formales, revisión de IA y mutaciones
+   - **Commit relacionado:** `336eb98` — docs: reescribir registro_pruebas.md con tablas formales, revisión de IA y mutaciones
+
+### Entrada 11
+
+- **Fecha:** 2026-11-25
+- **Prompt o sugerencia:** «Aplica la lista de verificación de la semana 6 al repositorio y propón un informe de revisión de seguridad con herramientas, criterios, tabla de hallazgos, revisión con IA y pendientes.»
+- **Decisión:** Aceptada con cambios
+- **Por qué:** La IA entregó la estructura de cuatro partes y la mayoría de los hallazgos de validación, pero dejó fuera el duplicado de códigos, los objetos internos mutables y la fijación de dependencias. Añadí esos tres puntos (H-05, H-06 y H-07), separé los falsos positivos y registré las categorías OWASP con su severidad.
+- **Verificación:** Contrasté cada hallazgo contra el commit `fe00949` línea por línea y ejecuté `ruff check .` y `pip-audit`; el resultado quedó en `revision_seguridad.md`.
+- **Commit relacionado:** por registrar en el cierre de la semana 6
+
+### Entrada 12
+
+- **Fecha:** 2026-11-25
+- **Prompt o sugerencia:** La IA sugirió usar `assert` dentro de las funciones de producción para validar cantidades y códigos, porque era más corto.
+- **Decisión:** Rechazada
+- **Por qué:** `assert` desaparece con `python -O` y lanza `AssertionError`, no un error de negocio. El contrato exige `ErrorInventario` con mensajes estables para la interfaz. Por eso se mantuvo `raise ErrorInventario(...)` en `_validar_cantidad`, `_validar_fecha` y `_buscar_material`.
+- **Verificación:** Las 58 pruebas originales y las 58 pruebas de abuso nuevas comprueban los mensajes exactos. Ruff solo ignora `S101` en `tests/*`, nunca en producción.
+- **Commit relacionado:** por registrar en el cierre de la semana 6
+
+### Entrada 13
+
+- **Fecha:** 2026-11-25
+- **Prompt o sugerencia:** La IA propuso agregar `python-dotenv` y leer credenciales desde `.env` en el módulo de inventario.
+- **Decisión:** Rechazada
+- **Por qué:** El ADR-001 pide solo biblioteca estándar en el núcleo y el proyecto no tiene credenciales ni servicios externos. Agregar la dependencia aumentaría la superficie de ataque sin resolver un problema real.
+- **Verificación:** `pip-audit` no reporta vulnerabilidades; el núcleo sigue sin dependencias de ejecución. Añadí `.env.example` como plantilla vacía y confirmé que `.gitignore` excluye `.env` y `.env.*`.
+- **Commit relacionado:** por registrar en el cierre de la semana 6
+
+### Entrada 14
+
+- **Fecha:** 2026-11-25
+- **Prompt o sugerencia:** «Clasifica los hallazgos de seguridad con OWASP Top 10 y dime cuáles son falsos positivos. También redacta el informe final integrador a partir de la plantilla.»
+- **Decisión:** Aceptada con cambios
+- **Por qué:** La IA acertó en la clasificación de la validación de entradas, pero marcó `math.isfinite` como ejecución dinámica y pidió hashing de contraseñas en un proyecto sin usuarios: ambos son falsos positivos. En el informe final corregí esas afirmaciones y enlacé cada fase a su evidencia real.
+- **Verificación:** Revisé cada clasificación contra el código y las pruebas; el informe final quedó en `informe_final.md` y su PDF en `docs/informe_final_integrador.pdf`.
+- **Commit relacionado:** por registrar en el cierre de la semana 6
 
 ## Resumen
 
@@ -105,6 +141,14 @@ Repositorio: https://github.com/DaizukeGc/jy-velas-jabones
 | Decisión | Cantidad |
 |---|---|
 | Aceptadas | 2 |
+| Aceptadas con cambios | 2 |
+| Rechazadas | 2 |
+
+### Semana 6
+
+| Decisión | Cantidad |
+|---|---|
+| Aceptadas | 0 |
 | Aceptadas con cambios | 2 |
 | Rechazadas | 2 |
 
